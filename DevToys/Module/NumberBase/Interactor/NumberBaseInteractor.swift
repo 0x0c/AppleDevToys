@@ -202,7 +202,7 @@ final class NumberBaseInteractor {
 
         guard let text = text,
             let pureString = text.purify(radix: radix),
-            let integer = Int(pureString)
+            let integer = Int(pureString, radix: radix)
         else {
             isUpdating = false
             return
