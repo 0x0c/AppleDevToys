@@ -38,13 +38,19 @@ final class SidebarRouter {
 extension SidebarRouter: SidebarRouterInput {
     func presentAllToolsViewController() {
         if viewController.splitViewController?.viewController(for: .secondary) is AllToolsViewInput == false {
-            viewController.splitViewController?.setViewController(AllToolsRouter.assembleModule(), for: .secondary)
+            viewController.splitViewController?.setViewController(
+                UINavigationController(rootViewController: AllToolsRouter.assembleModule()),
+                for: .secondary
+            )
         }
     }
 
     func presentNumberBaseViewController() {
         if viewController.splitViewController?.viewController(for: .secondary) is NumberBaseViewInput == false {
-            viewController.splitViewController?.setViewController(NumberBaseRouter.assembleModule(), for: .secondary)
+            viewController.splitViewController?.setViewController(
+                UINavigationController(rootViewController: NumberBaseRouter.assembleModule()),
+                for: .secondary
+            )
         }
     }
 }
