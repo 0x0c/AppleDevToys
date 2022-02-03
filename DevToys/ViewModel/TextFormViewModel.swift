@@ -9,7 +9,7 @@ import Combine
 import Reusable
 import UIKit
 
-final class TextFormViewModel: Hashable, TextFormAvailable {
+class TextFormViewModel: Hashable, TextFormAvailable {
     static func == (lhs: TextFormViewModel, rhs: TextFormViewModel) -> Bool {
         return lhs.hashValue == rhs.hashValue
     }
@@ -22,15 +22,15 @@ final class TextFormViewModel: Hashable, TextFormAvailable {
         return $text
     }
 
-    @Published var text: String?
+    @Published private(set) var text: String?
+    private(set) var shuldFocusSubject = PassthroughSubject<Void, Never>()
     var textForm: TextForm
     var nextForm: TextFormAvailable?
     var previousForm: TextFormAvailable?
     var defaultString: String?
-    private(set) var shuldFocusSubject = PassthroughSubject<Void, Never>()
-    private(set) var allowedStringHandler: ((String) -> Bool)?
-    private(set) var formatHandler: ((String?) -> String?)?
-    private(set) var validationHandler: ((String?) -> Error?)?
+    var allowedStringHandler: ((String) -> Bool)?
+    var formatHandler: ((String?) -> String?)?
+    var validationHandler: ((String?) -> Error?)?
     private(set) var validationAppearance: TextValidationAppearance
 
     init(
@@ -49,5 +49,13 @@ final class TextFormViewModel: Hashable, TextFormAvailable {
         self.formatHandler = formatHandler
         self.validationHandler = validationHandler
         self.validationAppearance = validationAppearance
+    }
+
+    func update(text: String?) {
+        guard let handler = formatHandler else {
+            self.text = text
+            return
+        }
+        self.text = handler(text)
     }
 }

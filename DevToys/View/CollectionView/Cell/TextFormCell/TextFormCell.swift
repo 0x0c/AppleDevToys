@@ -61,7 +61,7 @@ final class TextFormCell: UICollectionViewCell, NibReusable, TextFormCellProtoco
                 if weakSelf.shouldValidate {
                     weakSelf.validate()
                 }
-                viewModel.text = weakSelf.textField.text
+                viewModel.update(text: weakSelf.textField.text)
             }.store(in: &cancellable)
             NotificationCenter.default.publisher(
                 for: TextFormSection.performResignFirstResponder
@@ -108,16 +108,6 @@ final class TextFormCell: UICollectionViewCell, NibReusable, TextFormCellProtoco
             }
         }
     }
-
-    private func formattedString(_ string: String?) -> String? {
-        guard let viewModel = viewModel as? TextFormViewModel else {
-            return nil
-        }
-        if let handler = viewModel.formatHandler {
-            return handler(string)
-        }
-        return string
-    }
 }
 
 extension TextFormCell: UITextFieldDelegate {
@@ -137,12 +127,12 @@ extension TextFormCell: UITextFieldDelegate {
         }
         let newString = currentText.appending(string)
         guard let handler = viewModel.allowedStringHandler else {
-            viewModel.text = formattedString(newString)
+            viewModel.update(text: newString)
             textField.text = viewModel.text
             return false
         }
         if handler(newString) {
-            viewModel.text = formattedString(newString)
+            viewModel.update(text: newString)
             textField.text = viewModel.text
         }
         return false

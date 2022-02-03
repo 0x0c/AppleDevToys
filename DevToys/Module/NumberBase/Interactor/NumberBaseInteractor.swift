@@ -29,101 +29,11 @@ final class NumberBaseInteractor {
     var sections: [CollectionViewSection] = []
     private var cancellable = Set<AnyCancellable>()
 
-    private lazy var decimalTextFormViewModel = TextFormViewModel(
-        text: "0",
-        textForm: TextForm(
-            placeholder: "Decimal"
-        ),
-        defaultString: "0",
-        allowedStringHandler: { string in
-            if string == "00" {
-                return false
-            }
-            return string.purify(radix: 10)?.toInteger(radix: 10) != nil
-        },
-        formatHandler: { [unowned self] string in
-            if var ss = string, let char = ss.first, char == "0" {
-                return String(ss.removeLast())
-            }
-            let str = string?.purify(radix: 10)
-            if self.formatEnabledViewModel.isOn {
-                return str?.formatted(radix: 10)
-            }
-            return str
-        }
-    )
+    private lazy var decimalTextFormViewModel = DecimalTextFormViewModel()
+    private lazy var hexTextFormViewModel = HexadecimalTextFormViewModel()
+    private lazy var octalTextFormViewModel = OctalTextFormViewModel()
+    private lazy var binaryTextFormViewModel = BinaryTextFormViewModel()
 
-    private lazy var hexTextFormViewModel = TextFormViewModel(
-        text: "0",
-        textForm: TextForm(
-            placeholder: "Hex"
-        ),
-        defaultString: "0",
-        allowedStringHandler: { string in
-            if string == "00" {
-                return false
-            }
-            return string.purify(radix: 16)?.toInteger(radix: 16) != nil
-        },
-        formatHandler: { [unowned self] string in
-            if var ss = string, let char = ss.first, char == "0" {
-                return String(ss.removeLast())
-            }
-            var numberString: String? {
-                if self.uppercaseEnabledViewModel.isOn {
-                    return string?.uppercased()
-                }
-                return string?.lowercased()
-            }
-            let str = numberString?.purify(radix: 16)
-            if self.formatEnabledViewModel.isOn {
-                return str?.formatted(radix: 16)
-            }
-            return str
-        }
-    )
-
-    private lazy var octalTextFormViewModel = TextFormViewModel(
-        text: "0",
-        textForm: TextForm(
-            placeholder: "Octal"
-        ),
-        defaultString: "0",
-        allowedStringHandler: { string in
-            if string == "00" {
-                return false
-            }
-            return string.purify(radix: 8)?.toInteger(radix: 8) != nil
-        },
-        formatHandler: { [unowned self] string in
-            if var ss = string, let char = ss.first, char == "0" {
-                return String(ss.removeLast())
-            }
-            let str = string?.purify(radix: 8)
-            if self.formatEnabledViewModel.isOn {
-                return str?.formatted(radix: 8)
-            }
-            return str
-        }
-    )
-
-    private lazy var binaryTextFormViewModel = TextFormViewModel(
-        text: "0",
-        textForm: TextForm(
-            placeholder: "Binary"
-        ),
-        defaultString: "0",
-        allowedStringHandler: { string in
-            return string.purify(radix: 2)?.toInteger(radix: 2) != nil
-        },
-        formatHandler: { [unowned self] string in
-            let str = string?.purify(radix: 2)
-            if self.formatEnabledViewModel.isOn {
-                return str?.formatted(radix: 2)
-            }
-            return str
-        }
-    )
     private var isUpdating = false
 
     private var formatEnabledViewModel = SwitchCellViewModel(
@@ -186,9 +96,14 @@ final class NumberBaseInteractor {
         }.store(in: &cancellable)
 
         formatEnabledViewModel.$isOn.sink { [unowned self] enabled in
+            self.decimalTextFormViewModel.formatText = enabled
+            self.hexTextFormViewModel.formatText = enabled
+            self.octalTextFormViewModel.formatText = enabled
+            self.binaryTextFormViewModel.formatText = enabled
             self.reload(format: enabled, uppercase: self.uppercaseEnabledViewModel.isOn)
         }.store(in: &cancellable)
         uppercaseEnabledViewModel.$isOn.sink { [unowned self] enabled in
+            self.hexTextFormViewModel.uppercase = enabled
             self.reload(format: self.formatEnabledViewModel.isOn, uppercase: enabled)
         }.store(in: &cancellable)
     }
@@ -207,17 +122,10 @@ final class NumberBaseInteractor {
             isUpdating = false
             return
         }
-        decimalTextFormViewModel.text = integer.stringfy(radix: 10, format: format)
-        var hexString: String? {
-            let str = integer.stringfy(radix: 16, format: format)
-            if uppercase {
-                return str?.uppercased()
-            }
-            return str?.lowercased()
-        }
-        hexTextFormViewModel.text = hexString
-        octalTextFormViewModel.text = integer.stringfy(radix: 8, format: format)
-        binaryTextFormViewModel.text = integer.stringfy(radix: 2, format: format)
+        decimalTextFormViewModel.update(text: integer.stringfy(radix: 10, format: format))
+        hexTextFormViewModel.update(text: integer.stringfy(radix: 16, format: format))
+        octalTextFormViewModel.update(text: integer.stringfy(radix: 8, format: format))
+        binaryTextFormViewModel.update(text: integer.stringfy(radix: 2, format: format))
         isUpdating = false
     }
 
