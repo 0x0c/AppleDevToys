@@ -38,7 +38,7 @@ final class ToolGridSection: CollectionViewSection {
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: .init(
                 widthDimension: .fractionalWidth(1),
-                heightDimension: .absolute(ToolGridCell.defaultSize.height)
+                heightDimension: .estimated(ToolGridCell.defaultSize.height)
             ),
             subitem: item,
             count: columns

@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="An Open-Source Swiss Army knife for developers." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxm-EE-G3J">
-                        <rect key="frame" x="20" y="255.5" width="174" height="61"/>
+                        <rect key="frame" x="20" y="263.5" width="174" height="61"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -44,7 +44,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All tools" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTb-mk-nyQ">
-                        <rect key="frame" x="20" y="227" width="174" height="20.5"/>
+                        <rect key="frame" x="20" y="235" width="174" height="20.5"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20.5" id="Ab2-QJ-5AG"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20.5" id="KHK-8q-vzR"/>
@@ -62,10 +62,10 @@
                 <constraint firstItem="OyU-1d-0pg" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="45" id="6d0-Ia-Wpb"/>
                 <constraint firstItem="OyU-1d-0pg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="7wb-BO-KhA"/>
                 <constraint firstAttribute="trailing" secondItem="OyU-1d-0pg" secondAttribute="trailing" constant="20" id="EiL-pj-GKP"/>
-                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="hxm-EE-G3J" secondAttribute="bottom" constant="20" id="Noi-lD-XLc"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="hxm-EE-G3J" secondAttribute="bottom" constant="8" id="Noi-lD-XLc"/>
                 <constraint firstAttribute="trailing" secondItem="dTb-mk-nyQ" secondAttribute="trailing" constant="20" id="QsI-IC-VeX"/>
                 <constraint firstAttribute="trailing" secondItem="hxm-EE-G3J" secondAttribute="trailing" constant="20" id="Td0-uI-ili"/>
-                <constraint firstItem="dTb-mk-nyQ" firstAttribute="top" secondItem="OyU-1d-0pg" secondAttribute="bottom" constant="8" id="crq-Eq-lPD"/>
+                <constraint firstItem="dTb-mk-nyQ" firstAttribute="top" secondItem="OyU-1d-0pg" secondAttribute="bottom" constant="16" id="crq-Eq-lPD"/>
                 <constraint firstItem="hxm-EE-G3J" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="lmd-3P-PNX"/>
                 <constraint firstItem="hxm-EE-G3J" firstAttribute="top" secondItem="dTb-mk-nyQ" secondAttribute="bottom" constant="8" id="xXh-KV-v8T"/>
             </constraints>
