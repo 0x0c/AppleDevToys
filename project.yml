@@ -53,6 +53,9 @@ targets:
         UIMainStoryboardFile: Main
         UISupportedInterfaceOrientations:
           - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+          - UIInterfaceOrientationPortraitUpsideDown
         UILaunchStoryboardName: LaunchScreen
         NSAppTransportSecurity:
           NSAllowsArbitraryLoads: true

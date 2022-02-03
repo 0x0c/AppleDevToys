@@ -12,6 +12,12 @@ PODS:
   - R.swift (6.1.0):
     - R.swift.Library (~> 5.3.0)
   - R.swift.Library (5.3.0)
+  - Reusable (4.1.2):
+    - Reusable/Storyboard (= 4.1.2)
+    - Reusable/View (= 4.1.2)
+  - Reusable/Storyboard (4.1.2)
+  - Reusable/View (4.1.2)
+  - SFSafeSymbols (2.1.3)
   - SwiftFormat/CLI (0.49.3)
   - SwiftLint (0.46.2)
 
@@ -22,6 +28,8 @@ DEPENDENCIES:
   - Drops (from `https://github.com/omaralbeik/Drops.git`)
   - Gedatsu
   - R.swift
+  - Reusable
+  - SFSafeSymbols
   - SwiftFormat/CLI
   - SwiftLint
 
@@ -33,6 +41,8 @@ SPEC REPOS:
     - PromisesSwift
     - R.swift
     - R.swift.Library
+    - Reusable
+    - SFSafeSymbols
     - SwiftFormat
     - SwiftLint
 
@@ -67,9 +77,11 @@ SPEC CHECKSUMS:
   PromisesSwift: e0b2a6433469efb0b83a2b84c62a2abab8e5e5d4
   R.swift: ec98ff71c4ab2f6fd01dd077e5afd15e63a4834c
   R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
+  Reusable: 6bae6a5e8aa793c9c441db0213c863a64bce9136
+  SFSafeSymbols: 1c2d431b9e5ed20cd92a4ac303427f780d3354a3
   SwiftFormat: a3b79e8b5f8ecdec7a716b998aee230d08512894
   SwiftLint: 6bc52a21f0fd44cab9aa2dc8e534fb9f5e3ec507
 
-PODFILE CHECKSUM: 7654775085f9b948451976149b04de18b83030da
+PODFILE CHECKSUM: fc673c55526a9a71bad7dcea72c231f3136f4906
 
 COCOAPODS: 1.11.2
