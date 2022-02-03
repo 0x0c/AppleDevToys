@@ -42,7 +42,6 @@ extension SidebarPresenter: SidebarPresenterInput {
     }
 
     func viewDidLoad() {
-        // TODO: Implement if needed
         view.update(sections: interactor.sections)
     }
 
@@ -56,6 +55,8 @@ extension SidebarPresenter: SidebarPresenterInput {
                 switch item {
                 case .allTools:
                     router.presentAllToolsViewController()
+                case .numberBase:
+                    router.presentNumberBaseViewController()
                 default:
                     // TODO: 画面切り替え
                     print(item)

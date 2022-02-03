@@ -10,7 +10,9 @@ import UIKit
 
 protocol SidebarRouterInput: AnyObject {
     // MARK: View transitions
+
     func presentAllToolsViewController()
+    func presentNumberBaseViewController()
 }
 
 final class SidebarRouter {
@@ -35,8 +37,14 @@ final class SidebarRouter {
 
 extension SidebarRouter: SidebarRouterInput {
     func presentAllToolsViewController() {
-        if viewController.splitViewController?.viewController(for: .secondary) is AllToolsViewController == false {
+        if viewController.splitViewController?.viewController(for: .secondary) is AllToolsViewInput == false {
             viewController.splitViewController?.setViewController(AllToolsRouter.assembleModule(), for: .secondary)
+        }
+    }
+
+    func presentNumberBaseViewController() {
+        if viewController.splitViewController?.viewController(for: .secondary) is NumberBaseViewInput == false {
+            viewController.splitViewController?.setViewController(NumberBaseRouter.assembleModule(), for: .secondary)
         }
     }
 }

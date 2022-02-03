@@ -1,5 +1,5 @@
 //
-//  AllToolsPresenter.swift
+//  NumberBasePresenter.swift
 //  DevToys
 //
 //  Created by Akira on 03/02/2022.
@@ -10,7 +10,7 @@ import CompositionalLayoutViewController
 import CompositionalLayoutViewControllerViperExtension
 import UIKit
 
-protocol AllToolsPresenterInput: CollectionViewPresenterInput {
+protocol NumberBasePresenterInput: CollectionViewPresenterInput {
     // MARK: View Life-Cycle methods
 
     func viewDidLoad()
@@ -18,25 +18,25 @@ protocol AllToolsPresenterInput: CollectionViewPresenterInput {
     // MARK: Other methods called from View
 }
 
-final class AllToolsPresenter {
+final class NumberBasePresenter {
     // MARK: VIPER properties
 
-    weak var view: AllToolsViewInput!
-    var interactor: AllToolsInteractorInput!
-    var router: AllToolsRouterInput!
+    weak var view: NumberBaseViewInput!
+    var interactor: NumberBaseInteractorInput!
+    var router: NumberBaseRouterInput!
 
     // MARK: Stored instance properties
 
     // MARK: Computed instance properties
 
-    init(view: AllToolsViewInput, interactor: AllToolsInteractorInput, router: AllToolsRouterInput) {
+    init(view: NumberBaseViewInput, interactor: NumberBaseInteractorInput, router: NumberBaseRouterInput) {
         self.view = view
         self.interactor = interactor
         self.router = router
     }
 }
 
-extension AllToolsPresenter: AllToolsPresenterInput {
+extension NumberBasePresenter: NumberBasePresenterInput {
     var sections: [CollectionViewSection] {
         return interactor.sections
     }
@@ -49,17 +49,7 @@ extension AllToolsPresenter: AllToolsPresenterInput {
         return interactor.section(for: sectionIndex)
     }
 
-    func didItemSelect(indexPath: IndexPath) {
-//        if let section = interactor.section(for: indexPath.section) as? ToolGridSection {
-//            switch section.items[indexPath.row].toolItem {
-//            case .numberBase:
-//                break
-//            default:
-//                // TODO:
-//                break
-//            }
-//        }
-    }
+    func didItemSelect(indexPath: IndexPath) {}
 }
 
-extension AllToolsPresenter: AllToolsInteractorOutput {}
+extension NumberBasePresenter: NumberBaseInteractorOutput {}

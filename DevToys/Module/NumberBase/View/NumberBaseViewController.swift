@@ -1,23 +1,25 @@
 //
-//  AllToolsViewController.swift
+//  NumberBaseViewController.swift
 //  DevToys
 //
 //  Created by Akira on 03/02/2022.
 //  Copyright © 2022 Akira Matsuda. All rights reserved.
 //
 
+import SwiftUI
+
 import CompositionalLayoutViewController
 import CompositionalLayoutViewControllerViperExtension
 import UIKit
 
-protocol AllToolsViewInput: CollectionViewInput {
+protocol NumberBaseViewInput: CollectionViewInput {
     // MARK: Callback from presenter
 }
 
-final class AllToolsViewController: CompositionalLayoutViewController {
+final class NumberBaseViewController: CompositionalLayoutViewController {
     // MARK: Stored instance properties
 
-    var presenter: AllToolsPresenterInput!
+    var presenter: NumberBasePresenterInput!
 
     // MARK: Computed instance properties
 
@@ -31,22 +33,22 @@ final class AllToolsViewController: CompositionalLayoutViewController {
         presenter.viewDidLoad()
     }
 
-    // MARK: Other private methods
-
-    override func didSelectItem(at indexPath: IndexPath) {
-        presenter.didItemSelect(indexPath: indexPath)
+    override func layoutConfiguration() -> UICollectionViewCompositionalLayoutConfiguration {
+        let configuration = UICollectionViewCompositionalLayoutConfiguration()
+        configuration.interSectionSpacing = 16
+        return configuration
     }
+    // MARK: Other private methods
 }
 
-extension AllToolsViewController: SectionProvider {
+extension NumberBaseViewController: SectionProvider {
     var sections: [CollectionViewSection] {
         return presenter.sections
     }
 }
 
-extension AllToolsViewController: AllToolsViewInput {
+extension NumberBaseViewController: NumberBaseViewInput {
     func update(sections: [CollectionViewSection]) {
-        // TODO:
         updateDataSource(sections)
     }
 }

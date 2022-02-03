@@ -25,6 +25,7 @@ final class SidebarInteractor {
     weak var presenter: SidebarInteractorOutput!
 
     // MARK: Stored instance properties
+
     var sections: [CollectionViewSection] = []
 
     // MARK: Computed instance properties

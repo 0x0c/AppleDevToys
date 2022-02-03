@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gTV-IL-0wX" customClass="TextFormCell" customModule="DevToys" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Placeholder" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IL1-3X-X7b">
+                        <rect key="frame" x="16" y="0.0" width="288" height="50"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="neL-nC-oMG">
+                        <rect key="frame" x="16" y="0.0" width="288" height="15"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                        <color key="textColor" systemColor="systemPinkColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="neL-nC-oMG" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="C12-y1-UzH"/>
+                <constraint firstItem="IL1-3X-X7b" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="F2M-lY-6Na"/>
+                <constraint firstItem="neL-nC-oMG" firstAttribute="leading" secondItem="IL1-3X-X7b" secondAttribute="leading" id="NLy-ky-5A0"/>
+                <constraint firstAttribute="bottom" secondItem="IL1-3X-X7b" secondAttribute="bottom" id="Zwo-xw-Fqx"/>
+                <constraint firstItem="IL1-3X-X7b" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="c5J-IT-5yi"/>
+                <constraint firstAttribute="trailing" secondItem="IL1-3X-X7b" secondAttribute="trailing" constant="16" id="cta-ia-EcP"/>
+                <constraint firstItem="IL1-3X-X7b" firstAttribute="trailing" secondItem="neL-nC-oMG" secondAttribute="trailing" id="gSe-TP-7Ug"/>
+                <constraint firstItem="IL1-3X-X7b" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="nOE-1v-xhf"/>
+            </constraints>
+            <size key="customSize" width="183" height="50"/>
+            <connections>
+                <outlet property="baseErrorLabel" destination="neL-nC-oMG" id="Rlj-zK-lUp"/>
+                <outlet property="baseTextField" destination="IL1-3X-X7b" id="8MQ-GC-HKb"/>
+            </connections>
+            <point key="canvasLocation" x="227.536231884058" y="130.58035714285714"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
