@@ -50,15 +50,15 @@ extension AllToolsPresenter: AllToolsPresenterInput {
     }
 
     func didItemSelect(indexPath: IndexPath) {
-//        if let section = interactor.section(for: indexPath.section) as? ToolGridSection {
-//            switch section.items[indexPath.row].toolItem {
-//            case .numberBase:
-//                break
-//            default:
-//                // TODO:
-//                break
-//            }
-//        }
+        if let section = interactor.section(for: indexPath.section) as? ToolGridSection {
+            switch section.items[indexPath.row].toolItem {
+            case .numberBase:
+                router.presentNumberBaseViewController()
+            default:
+                // TODO:
+                break
+            }
+        }
     }
 }
 

@@ -10,6 +10,7 @@ import UIKit
 
 protocol AllToolsRouterInput: AnyObject {
     // MARK: View transitions
+    func presentNumberBaseViewController()
 }
 
 final class AllToolsRouter {
@@ -21,11 +22,6 @@ final class AllToolsRouter {
 
     static func assembleModule() -> AllToolsViewController {
         let view = AllToolsViewController()
-        // TODO: Create a Storyboard with the same name as "AllTools".
-        // TODO: And Change "AllTools" of "R.storyboard.AllTools" to lowercase.
-        // guard let view = R.storyboard.AllTools.instantiateInitialViewController() else {
-        //     fatalError("Fail to load AllToolsViewController from Storyboard.")
-        // }
         let interactor = AllToolsInteractor()
         let router = AllToolsRouter(viewController: view)
         let presenter = AllToolsPresenter(view: view, interactor: interactor, router: router)
@@ -37,4 +33,8 @@ final class AllToolsRouter {
     }
 }
 
-extension AllToolsRouter: AllToolsRouterInput {}
+extension AllToolsRouter: AllToolsRouterInput {
+    func presentNumberBaseViewController() {
+        viewController.navigationController?.pushViewController(NumberBaseRouter.assembleModule(), animated: true)
+    }
+}
