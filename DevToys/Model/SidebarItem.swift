@@ -9,25 +9,33 @@ import UIKit
 
 enum SidebarItem: Hashable {
     case header(String)
+
+    // Converters
     case jsonYamlConvert
     case numberBase
 
+    // Encoders/ Decoders
     case htmlEncodeDecode
     case urlEncodeDecode
     case base64EncodeDecode
     // case gzipEncodeDecode
     case jwtDecoder
 
+    // Formatters
     case jsonFormatter
     // case sqlFormatter
     // case xmlFormatter
 
+    // Generator
     case hashGenerator
     case uuidGenerator
     case loremIpsumGenerator
     // case checkSumGenerator
 
+    // Text
     case inspectorCaseConverter
+
+    // Graphic
 
     struct Content {
         let text: String?

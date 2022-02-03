@@ -25,12 +25,6 @@ final class SidebarInteractor {
     weak var presenter: SidebarInteractorOutput!
 
     // MARK: Stored instance properties
-    private let sidebarItems: [SidebarItem] = [
-        .header("Converter"),
-        .jsonYamlConvert,
-        .numberBase
-    ]
-
     var sections: [CollectionViewSection] = []
 
     // MARK: Computed instance properties
@@ -40,8 +34,40 @@ final class SidebarInteractor {
     init() {
         sections = [
             SidebarSection(
-                items: sidebarItems,
-                showHeader: true
+                items: [
+                    .header("Converters"),
+                    .jsonYamlConvert,
+                    .numberBase
+                ]
+            ),
+            SidebarSection(
+                items: [
+                    .header("Encoders / Decoders"),
+                    .htmlEncodeDecode,
+                    .urlEncodeDecode,
+                    .base64EncodeDecode,
+                    .jwtDecoder
+                ]
+            ),
+            SidebarSection(
+                items: [
+                    .header("Formatters"),
+                    .jsonFormatter
+                ]
+            ),
+            SidebarSection(
+                items: [
+                    .header("Generator"),
+                    .hashGenerator,
+                    .uuidGenerator,
+                    .loremIpsumGenerator
+                ]
+            ),
+            SidebarSection(
+                items: [
+                    .header("Text"),
+                    .inspectorCaseConverter
+                ]
             )
         ]
     }

@@ -21,11 +21,6 @@ final class SidebarRouter {
 
     static func assembleModule() -> SidebarViewController {
         let view = SidebarViewController()
-        // TODO: Create a Storyboard with the same name as "Sidebar".
-        // TODO: And Change "Sidebar" of "R.storyboard.Sidebar" to lowercase.
-        // guard let view = R.storyboard.Sidebar.instantiateInitialViewController() else {
-        //     fatalError("Fail to load SidebarViewController from Storyboard.")
-        // }
         let interactor = SidebarInteractor()
         let router = SidebarRouter(viewController: view)
         let presenter = SidebarPresenter(view: view, interactor: interactor, router: router)

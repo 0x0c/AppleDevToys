@@ -10,7 +10,13 @@ import Reusable
 import UIKit
 
 class SidebarSection: ListSection<SidebarItem> {
-    init(items: [SidebarItem], showHeader: Bool) {
+    init(items: [SidebarItem]) {
+        var showHeader: Bool {
+            if case .header = items.first {
+                return true
+            }
+            return false
+        }
         super.init(
             items: items,
             cellCongicuration: { cell, _, item in
