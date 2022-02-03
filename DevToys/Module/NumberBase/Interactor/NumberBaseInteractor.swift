@@ -58,10 +58,17 @@ final class NumberBaseInteractor {
         textForm: TextForm(
             placeholder: "Hex"
         ),
+        defaultString: "0",
         allowedStringHandler: { string in
+            if string == "00" {
+                return false
+            }
             return string.purify(radix: 16)?.toInteger(radix: 16) != nil
         },
         formatHandler: { [unowned self] string in
+            if var ss = string, let char = ss.first, char == "0" {
+                return String(ss.removeLast())
+            }
             var numberString: String? {
                 if self.uppercaseEnabledViewModel.isOn {
                     return string?.uppercased()
@@ -81,10 +88,17 @@ final class NumberBaseInteractor {
         textForm: TextForm(
             placeholder: "Octal"
         ),
+        defaultString: "0",
         allowedStringHandler: { string in
+            if string == "00" {
+                return false
+            }
             return string.purify(radix: 8)?.toInteger(radix: 8) != nil
         },
         formatHandler: { [unowned self] string in
+            if var ss = string, let char = ss.first, char == "0" {
+                return String(ss.removeLast())
+            }
             let str = string?.purify(radix: 8)
             if self.formatEnabledViewModel.isOn {
                 return str?.formatted(radix: 8)
@@ -98,6 +112,7 @@ final class NumberBaseInteractor {
         textForm: TextForm(
             placeholder: "Binary"
         ),
+        defaultString: "0",
         allowedStringHandler: { string in
             return string.purify(radix: 2)?.toInteger(radix: 2) != nil
         },
