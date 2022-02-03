@@ -29,6 +29,9 @@ final class NumberBaseViewController: CompositionalLayoutViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.prefersLargeTitles = true
+        title = "Number Base"
         provider = self
         presenter.viewDidLoad()
     }
