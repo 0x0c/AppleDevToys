@@ -33,6 +33,7 @@ final class SidebarInteractor {
 
     init() {
         sections = [
+            SidebarSection(items: [.allTools]),
             SidebarSection(
                 items: [
                     .header("Converters"),

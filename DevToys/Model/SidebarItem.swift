@@ -10,6 +10,8 @@ import UIKit
 enum SidebarItem: Hashable {
     case header(String)
 
+    case allTools
+
     // Converters
     case jsonYamlConvert
     case numberBase
@@ -46,15 +48,20 @@ enum SidebarItem: Hashable {
         switch self {
         case let .header(string):
             return .init(text: string)
+        case .allTools:
+            return .init(
+                text: "All tools",
+                image: UIImage(systemSymbol: .house)
+            )
         case .jsonYamlConvert:
             return .init(
                 text: "JSON <> YAML",
-                image: UIImage(systemSymbol: .arrowLeftArrowRightSquareFill)
+                image: UIImage(systemSymbol: .arrowLeftArrowRightSquare)
             )
         case .numberBase:
             return .init(
                 text: "Number Base",
-                image: UIImage(systemSymbol: ._42SquareFill)
+                image: UIImage(systemSymbol: ._42Square)
             )
         case .htmlEncodeDecode:
             return .init(
@@ -69,7 +76,7 @@ enum SidebarItem: Hashable {
         case .base64EncodeDecode:
             return .init(
                 text: "Base64",
-                image: UIImage(systemSymbol: ._46CircleFill)
+                image: UIImage(systemSymbol: ._46Circle)
             )
         case .jwtDecoder:
             return .init(
@@ -84,7 +91,7 @@ enum SidebarItem: Hashable {
         case .hashGenerator:
             return .init(
                 text: "Hash",
-                image: UIImage(systemSymbol: .numberSquareFill)
+                image: UIImage(systemSymbol: .numberSquare)
             )
         case .uuidGenerator:
             return .init(
