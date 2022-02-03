@@ -17,9 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: scene)
         let splitViewController = UISplitViewController(style: .doubleColumn)
-        splitViewController.preferredDisplayMode = .oneBesideSecondary
         splitViewController.presentsWithGesture = false
-        splitViewController.preferredSplitBehavior = .tile
 
         splitViewController.setViewController(SidebarRouter.assembleModule(), for: .primary)
         splitViewController.setViewController(AllToolsRouter.assembleModule(), for: .compact)
