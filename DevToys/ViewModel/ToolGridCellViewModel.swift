@@ -26,6 +26,10 @@ final class ToolGridCellViewModel: Hashable {
         return toolItem.content().text
     }
 
+    var detail: String? {
+        return toolItem.content().detail
+    }
+
     var image: UIImage? {
         return toolItem.content().image
     }

@@ -22,6 +22,7 @@ class ToolGridCell: UICollectionViewCell, NibReusable {
                 return
             }
             titleLabel.text = viewModel.title
+            detailLabel.text = viewModel.detail
             imageView.image = viewModel.image
         }
     }
