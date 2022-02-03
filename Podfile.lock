@@ -1,0 +1,75 @@
+PODS:
+  - CombineExt (1.5.1)
+  - CompositionalLayoutViewController (0.5.4)
+  - CompositionalLayoutViewControllerViperExtension (0.0.3):
+    - CompositionalLayoutViewController (>= 0.1.0)
+    - PromisesSwift (>= 1.2.0)
+  - Drops (1.4.0)
+  - Gedatsu (1.2.0)
+  - PromisesObjC (2.0.0)
+  - PromisesSwift (2.0.0):
+    - PromisesObjC (= 2.0.0)
+  - R.swift (6.1.0):
+    - R.swift.Library (~> 5.3.0)
+  - R.swift.Library (5.3.0)
+  - SwiftFormat/CLI (0.49.3)
+  - SwiftLint (0.46.2)
+
+DEPENDENCIES:
+  - CombineExt
+  - CompositionalLayoutViewController (from `https://github.com/oneinc-jp/CompositionalLayoutViewController.git`, branch `develop`)
+  - CompositionalLayoutViewControllerViperExtension (from `https://github.com/0x0c/CompositionalLayoutViewControllerViperExtension.git`, branch `main`)
+  - Drops (from `https://github.com/omaralbeik/Drops.git`)
+  - Gedatsu
+  - R.swift
+  - SwiftFormat/CLI
+  - SwiftLint
+
+SPEC REPOS:
+  trunk:
+    - CombineExt
+    - Gedatsu
+    - PromisesObjC
+    - PromisesSwift
+    - R.swift
+    - R.swift.Library
+    - SwiftFormat
+    - SwiftLint
+
+EXTERNAL SOURCES:
+  CompositionalLayoutViewController:
+    :branch: develop
+    :git: https://github.com/oneinc-jp/CompositionalLayoutViewController.git
+  CompositionalLayoutViewControllerViperExtension:
+    :branch: main
+    :git: https://github.com/0x0c/CompositionalLayoutViewControllerViperExtension.git
+  Drops:
+    :git: https://github.com/omaralbeik/Drops.git
+
+CHECKOUT OPTIONS:
+  CompositionalLayoutViewController:
+    :commit: 403380bf108ba05844ba746ed98d473fb7c6e985
+    :git: https://github.com/oneinc-jp/CompositionalLayoutViewController.git
+  CompositionalLayoutViewControllerViperExtension:
+    :commit: 6b83ea96591a9bd5f58e72f8b303a1cb29390fad
+    :git: https://github.com/0x0c/CompositionalLayoutViewControllerViperExtension.git
+  Drops:
+    :commit: 41440b33372402770d8122fcf10994776d683e90
+    :git: https://github.com/omaralbeik/Drops.git
+
+SPEC CHECKSUMS:
+  CombineExt: e081b93f38f507660550e001531a049a6825f63e
+  CompositionalLayoutViewController: 1158ab1b40ef7fa8181d0adafe1aecf97fc4b8c2
+  CompositionalLayoutViewControllerViperExtension: ab33e1ead3ad697fe5900fffa75af5adaff3920d
+  Drops: e0922898e3985a0b9329f388bd9811f9cd9f7dd0
+  Gedatsu: 13a21a3cbf7978f9ff671eca5715b94a4309d9a8
+  PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
+  PromisesSwift: e0b2a6433469efb0b83a2b84c62a2abab8e5e5d4
+  R.swift: ec98ff71c4ab2f6fd01dd077e5afd15e63a4834c
+  R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
+  SwiftFormat: a3b79e8b5f8ecdec7a716b998aee230d08512894
+  SwiftLint: 6bc52a21f0fd44cab9aa2dc8e534fb9f5e3ec507
+
+PODFILE CHECKSUM: 7654775085f9b948451976149b04de18b83030da
+
+COCOAPODS: 1.11.2

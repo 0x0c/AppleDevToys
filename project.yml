@@ -1,0 +1,146 @@
+name: DevToys
+configs:
+  Debug: debug
+  Production: debug
+  Release: release
+options:
+  deploymentTarget:
+    iOS: '15.0'
+    macOS: '12.1'
+targets:
+  DevToys:
+    platform: iOS
+    type: application
+    sources:
+      - path: DevToys
+        excludes:
+          - "**/*.framework"
+          - "**/*.xcframework"
+      - R.generated.swift
+    requiresObjCLinking: true
+    preBuildScripts:
+      - script: |
+          if [ "$UPDATE_R_SWIFT" == "YES" ]; then
+            $PODS_ROOT/R.swift/rswift generate $SRCROOT/R.generated.swift
+          fi
+        name: R.swift Run Script
+        inputFiles:
+          - "$TEMP_DIR/rswift-lastrun"
+        outputFiles:
+          - "$SRCROOT/R.generated.swift"
+      - script: "${PODS_ROOT}/SwiftLint/swiftlint"
+        name: Swiftlint Run Script
+    postBuildScripts:
+      # - script: "${PODS_ROOT}/FirebaseCrashlytics/run"
+      #   name: Run FirebaseCrashlytics Script
+      #   inputFiles:
+      #     - "${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}"
+      #     - "${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}"
+    info:
+      path: DevToys/Info.plist
+      properties:
+        CFBundleDisplayName: 'DevToys'
+        CFBundleShortVersionString: &Version 1.0.0
+        CFBundleVersion: &BundleVersion '202202012306'
+        CFBundleDevelopmentRegion: "$(DEVELOPMENT_LANGUAGE)"
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+          UISceneConfigurations:
+            UIWindowSceneSessionRoleApplication:
+              - UISceneConfigurationName: Default Configuration
+                UISceneDelegateClassName: "$(PRODUCT_MODULE_NAME).SceneDelegate"
+                UISceneStoryboardFile: Main
+        UIMainStoryboardFile: Main
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        UILaunchStoryboardName: LaunchScreen
+        NSAppTransportSecurity:
+          NSAllowsArbitraryLoads: true
+          NSAllowsArbitraryLoadsInWebContent: true
+          NSAllowsArbitraryLoadsForMedia: true
+        ITSAppUsesNonExemptEncryption: false
+        LSApplicationCategoryType: ''
+        LSRequiresIPhoneOS: true
+    settings:
+      base:
+        SUPPORTS_MACCATALYST: true
+        TARGETED_DEVICE_FAMILY: '1,2,6'
+        CODE_SIGN_ENTITLEMENTS: DevToys/DevToys.entitlements
+        DEBUG_INFORMATION_FORMAT: &DEBUG_INFORMATION_FORMAT dwarf-with-dsym
+        MARKETING_VERSION: *Version
+        CURRENT_PROJECT_VERSION: *BundleVersion
+        VERSIONING_SYSTEM: apple-generic
+        PRODUCT_BUNDLE_IDENTIFIER: com.akira.matsuda.DevToys
+        UPDATE_R_SWIFT: false
+        DEVELOPMENT_TEAM: 
+        OTHER_LDFLAGS:
+          - "$(inherited)"
+          - '-ObjC'
+      configs:
+        Debug: &DebugConfig
+          PROVISIONING_PROFILE_SPECIFIER: com.akira.matsuda.DevToys Development
+          SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+          GCC_PREPROCESSOR_DEFINITIONS:
+            - "$(inherited)"
+            - DEBUG=1
+          OTHER_SWIFT_FLAGS:
+            - "$(inherited)"
+            - "-D"
+            - Debug
+            - "-Xfrontend -debug-time-function-bodies"
+        Production: &ProductionConfig
+          PROVISIONING_PROFILE_SPECIFIER: com.akira.matsuda.DevToys Development
+          SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+          OTHER_SWIFT_FLAGS:
+            - "$(inherited)"
+            - "-D"
+            - Production
+            - "-Xfrontend -debug-time-function-bodies"
+        Release:
+          CODE_SIGN_IDENTITY: iPhone Distribution
+          PROVISIONING_PROFILE_SPECIFIER: com.akira.matsuda.DevToys AppStore
+          OTHER_SWIFT_FLAGS:
+            - "$(inherited)"
+            - "-D"
+            - Release
+    scheme:
+      testTargets:
+        - DevToysTests
+      environmentVariables:
+        DYLD_PRINT_STATISTICS: true
+  DevToysTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: DevToysTests
+    settings:
+      base:
+        INFOPLIST_FILE: DevToysTests/Info.plist
+        PRODUCT_BUNDLE_IDENTIFIER: com.akira.matsuda.$(PRODUCT_NAME:rfc1034identifier)
+        CODE_SIGN_STYLE: Automatic
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/DevToys.app/DevToys"
+        ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: true
+        BUNDLE_LOADER: "$(TEST_HOST)"
+        DEBUG_INFORMATION_FORMAT: *DEBUG_INFORMATION_FORMAT
+      configs:
+        Debug: *DebugConfig
+        Production: *ProductionConfig
+        Release:
+    dependencies:
+      - target: DevToys
+# aggregateTargets:
+#   Periphery:
+#     buildScripts:
+#       - script: ./Pods/Periphery/periphery scan --workspace DevToys.xcworkspace --schemes DevToys --targets DevToys --format xcode --report-exclude "R.generated.swift" --retain-unused-protocol-func-params --retain-objc-accessible
+schemes:
+  # Periphery:
+  #   build:
+  #     targets:
+  #       Periphery: all
+  #   run:
+  #     config: Debug
+  DevToys Production:
+    build:
+      targets:
+        DevToys: all
+    run:
+      config: Production

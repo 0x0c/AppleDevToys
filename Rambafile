@@ -1,0 +1,38 @@
+catalogs:
+- 'https://github.com/0x0c/generamba-catalog'
+- 'https://github.com/0x0c/generamba-compositional-layout-catalog'
+
+### Headers settings
+company: Akira Matsuda
+
+### Xcode project settings
+project_name: DevToys
+xcodeproj_path: DevToys.xcodeproj
+
+### Code generation settings section
+# The main project target name
+project_target: DevToys
+
+# The file path for new modules
+project_file_path: DevToys/Module
+
+# The Xcode group path to new modules
+project_group_path: DevToys/Module
+
+### Tests generation settings section
+# The tests target name
+test_target: DevToysTests
+
+# The file path for new tests
+test_file_path: DevToysTests/Module
+
+# The Xcode group path to new tests
+test_group_path: DevToysTests/Module
+
+### Dependencies settings section
+podfile_path: Podfile
+
+### Templates
+templates:
+- {name: 0x0c_viper}
+- {name: 0x0c_viper_compositional_layout}
