@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         splitViewController.preferredSplitBehavior = .tile
 
         splitViewController.setViewController(SidebarRouter.assembleModule(), for: .primary)
-        splitViewController.setViewController(AllToolsRouter.assembleModule(), for: .compact)
+        splitViewController.setViewController(AllToolsRouter.assembleModule(), for: .secondary)
         window.rootViewController = splitViewController
         self.window = window
         window.makeKeyAndVisible()
