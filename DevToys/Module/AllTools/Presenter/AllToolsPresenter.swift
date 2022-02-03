@@ -42,7 +42,7 @@ extension AllToolsPresenter: AllToolsPresenterInput {
     }
 
     func viewDidLoad() {
-        // TODO: Implement if needed
+        view.update(sections: interactor.sections)
     }
 
     func section(for sectionIndex: Int) -> CollectionViewSection {

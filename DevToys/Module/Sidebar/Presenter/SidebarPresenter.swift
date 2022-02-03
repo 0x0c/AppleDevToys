@@ -51,9 +51,16 @@ extension SidebarPresenter: SidebarPresenterInput {
     }
 
     func didItemSelect(indexPath: IndexPath) {
-        // TODO: 画面切り替え
         if let section = interactor.section(for: indexPath.section) as? SidebarSection {
-            let item = section.items[indexPath.row]
+            if case let .toolItem(item) = section.item(for: indexPath) {
+                switch item {
+                case .allTools:
+                    router.presentAllToolsViewController()
+                default:
+                    // TODO: 画面切り替え
+                    print(item)
+                }
+            }
         }
     }
 }

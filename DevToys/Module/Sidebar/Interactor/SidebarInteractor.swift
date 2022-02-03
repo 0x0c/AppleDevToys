@@ -36,39 +36,39 @@ final class SidebarInteractor {
             SidebarSection(items: [.allTools]),
             SidebarSection(
                 items: [
-                    .header("Converters"),
                     .jsonYamlConvert,
                     .numberBase
-                ]
+                ],
+                headerTitle: "Converters"
             ),
             SidebarSection(
                 items: [
-                    .header("Encoders / Decoders"),
                     .htmlEncodeDecode,
                     .urlEncodeDecode,
                     .base64EncodeDecode,
                     .jwtDecoder
-                ]
+                ],
+                headerTitle: "Encoders / Decoders"
             ),
             SidebarSection(
                 items: [
-                    .header("Formatters"),
                     .jsonFormatter
-                ]
+                ],
+                headerTitle: "Formatters"
             ),
             SidebarSection(
                 items: [
-                    .header("Generator"),
                     .hashGenerator,
                     .uuidGenerator,
                     .loremIpsumGenerator
-                ]
+                ],
+                headerTitle: "Generator"
             ),
             SidebarSection(
                 items: [
-                    .header("Text"),
                     .inspectorCaseConverter
-                ]
+                ],
+                headerTitle: "Text"
             )
         ]
     }

@@ -27,6 +27,9 @@ final class SidebarViewController: CompositionalLayoutViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "DevToys"
+        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.prefersLargeTitles = true
         provider = self
         presenter.viewDidLoad()
     }
@@ -45,14 +48,19 @@ final class SidebarViewController: CompositionalLayoutViewController {
 
         for section in sections {
             if let section = section as? SidebarSection {
-                if let item = section.items.first {
+                if let header = section.header {
                     var sectionSnapshot = NSDiffableDataSourceSectionSnapshot<AnyHashable>()
-                    sectionSnapshot.append([item])
+                    sectionSnapshot.append([header])
                     sectionSnapshot.append(
-                        [SidebarItem](section.items.dropFirst()),
-                        to: item
+                        section.items,
+                        to: header
                     )
-                    sectionSnapshot.expand([item])
+                    sectionSnapshot.expand([header])
+                    dataSource.apply(sectionSnapshot, to: section.snapshotSection)
+                }
+                else {
+                    var sectionSnapshot = NSDiffableDataSourceSectionSnapshot<AnyHashable>()
+                    sectionSnapshot.append([section.items])
                     dataSource.apply(sectionSnapshot, to: section.snapshotSection)
                 }
             }

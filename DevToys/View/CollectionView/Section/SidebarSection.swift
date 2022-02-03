@@ -10,27 +10,46 @@ import Reusable
 import UIKit
 
 class SidebarSection: ListSection<SidebarItem> {
-    init(items: [SidebarItem]) {
-        var showHeader: Bool {
-            if case .header = items.first {
-                return true
-            }
-            return false
+    let headerTitle: String?
+
+    var header: SidebarItem? {
+        guard let headerTitle = headerTitle else {
+            return nil
         }
+        return .header(headerTitle)
+    }
+
+    init(items: [ToolItem], headerTitle: String? = nil) {
+        self.headerTitle = headerTitle
         super.init(
-            items: items,
+            items: items.map { SidebarItem.toolItem($0) },
             cellCongicuration: { cell, _, item in
                 var content = cell.defaultContentConfiguration()
-                let cellContent = item.content()
-                content.image = cellContent.image
-                content.text = cellContent.text
-                if case .header = item {
+                switch item {
+                case let .header(title):
+                    content.text = title
                     cell.accessories = [.outlineDisclosure()]
+                case let .toolItem(item):
+                    let cellContent = item.content()
+                    content.image = cellContent.image
+                    content.text = cellContent.text
+                    cell.accessories = []
                 }
+
                 return content
             },
             appearance: .sidebar,
-            headerMode: showHeader ? .firstItemInSection : .none
+            headerMode: headerTitle != nil ? .firstItemInSection : .none
         )
+    }
+
+    override func item(for indexPath: IndexPath) -> SidebarItem {
+        if let header = header {
+            if indexPath.row == 0 {
+                return header
+            }
+            return items[indexPath.row - 1]
+        }
+        return items[indexPath.row]
     }
 }

@@ -31,7 +31,15 @@ final class AllToolsInteractor {
 
     // MARK: Initializer
 
-    init() {}
+    init() {
+        sections = [
+            ToolGridSection(
+                items: [ToolItem](ToolItem.allCases.dropFirst()).map {
+                    ToolGridCellViewModel(toolItem: $0)
+                }
+            )
+        ]
+    }
 
     // MARK: Other private methods
 }

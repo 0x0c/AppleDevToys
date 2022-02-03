@@ -63,7 +63,7 @@ class ListSection<Model: Hashable>: CollectionViewSection {
         return collectionView.dequeueConfiguredReusableCell(
             using: cellRegistration,
             for: indexPath,
-            item: items[indexPath.row]
+            item: item(for: indexPath)
         )
     }
 
@@ -72,4 +72,8 @@ class ListSection<Model: Hashable>: CollectionViewSection {
     }
 
     func configureSupplementaryView(_ view: UICollectionReusableView, indexPath: IndexPath) {}
+
+    func item(for indexPath: IndexPath) -> Model {
+        return items[indexPath.row]
+    }
 }
