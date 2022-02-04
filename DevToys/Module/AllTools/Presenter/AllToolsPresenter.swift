@@ -58,6 +58,8 @@ extension AllToolsPresenter: AllToolsPresenterInput {
                 router.presentBase64ViewController()
             case .jwtDecoder:
                 router.presentJWTDecodeViewController()
+            case .uuidGenerator:
+                router.presentUUIDViewController()
             default:
                 // TODO:
                 break

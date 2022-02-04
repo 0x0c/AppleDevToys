@@ -12,28 +12,15 @@ class HexadecimalTextFormViewModel: TextFormViewModel {
     var uppercase = false
 
     static func alloewdString(_ string: String) -> Bool {
-        if string == "00" {
-            return false
-        }
-        return string.replacingOccurrences(of: " ", with: "").purify(radix: 16)?.toInteger(radix: 16) != nil
+        return HexadecimalStringValidator.isValid(string)
     }
 
     static func formatedString(_ string: String?, format: Bool = false, uppercase: Bool = false) -> String? {
-        if var ss = string, ss.count > 1, let char = ss.first, char == "0" {
-            ss.removeFirst()
-            return String(ss)
+        let str = HexadecimalStringFormatter.purify(string, format: format)
+        if uppercase {
+            return str?.uppercased()
         }
-        var numberString: String? {
-            if uppercase {
-                return string?.uppercased()
-            }
-            return string?.lowercased()
-        }
-        let str = numberString?.replacingOccurrences(of: " ", with: "").purify(radix: 16)
-        if format {
-            return str?.formatted(radix: 16)
-        }
-        return str
+        return str?.lowercased()
     }
 
     required init(isEditable: Bool) {
