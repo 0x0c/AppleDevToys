@@ -36,13 +36,13 @@
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KqG-vO-wXM">
                                                         <rect key="frame" x="8" y="8" width="752" height="92"/>
-                                                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                                                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                                         <color key="textColor" systemColor="labelColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstItem="KqG-vO-wXM" firstAttribute="top" secondItem="g3K-ZF-J68" secondAttribute="top" constant="8" id="EOI-gu-4rd"/>
                                                     <constraint firstAttribute="trailing" secondItem="KqG-vO-wXM" secondAttribute="trailing" constant="8" id="OxW-aD-Jg4"/>
@@ -69,13 +69,13 @@
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4gj-Zb-cWR">
                                                         <rect key="frame" x="8" y="8" width="752" height="92"/>
-                                                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                                                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                                         <color key="textColor" systemColor="labelColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="4gj-Zb-cWR" secondAttribute="bottom" constant="8" id="65X-d9-M9A"/>
                                                     <constraint firstItem="4gj-Zb-cWR" firstAttribute="top" secondItem="MM1-Ce-8ex" secondAttribute="top" constant="8" id="UMr-ZW-uUH"/>
@@ -102,13 +102,13 @@
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OrD-Nc-LKM">
                                                         <rect key="frame" x="8" y="8" width="752" height="92"/>
-                                                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                                                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                                         <color key="textColor" systemColor="labelColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="OrD-Nc-LKM" secondAttribute="trailing" constant="8" id="Bzy-bf-cc7"/>
                                                     <constraint firstItem="OrD-Nc-LKM" firstAttribute="top" secondItem="Ar8-4g-M5L" secondAttribute="top" constant="8" id="eAa-ee-FHO"/>
@@ -135,13 +135,13 @@
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="daA-ks-MG9">
                                                         <rect key="frame" x="8" y="8" width="752" height="92"/>
-                                                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                                                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                                         <color key="textColor" systemColor="labelColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstItem="daA-ks-MG9" firstAttribute="top" secondItem="JxY-fF-Quz" secondAttribute="top" constant="8" id="43s-wE-vKe"/>
                                                     <constraint firstItem="daA-ks-MG9" firstAttribute="leading" secondItem="JxY-fF-Quz" secondAttribute="leading" constant="8" id="ZhJ-4T-crN"/>
@@ -183,11 +183,11 @@
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGroupedBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

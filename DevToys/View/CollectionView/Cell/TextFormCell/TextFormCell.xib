@@ -29,7 +29,7 @@
                     </label>
                 </subviews>
             </view>
-            <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="neL-nC-oMG" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="C12-y1-UzH"/>
                 <constraint firstItem="IL1-3X-X7b" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="F2M-lY-6Na"/>
@@ -49,7 +49,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <systemColor name="systemGroupedBackgroundColor">
+        <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
