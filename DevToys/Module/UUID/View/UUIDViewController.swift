@@ -33,6 +33,9 @@ final class UUIDViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "UUID Generator"
+        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.prefersLargeTitles = true
         textView.font = .monospacedSystemFont(ofSize: 14, weight: .regular)
         numberOfUUIDsTextField.delegate = self
         backgroundViews.forEach {
