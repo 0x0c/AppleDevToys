@@ -19,10 +19,7 @@ class HexadecimalTextFormViewModel: TextFormViewModel {
     }
 
     static func formatedString(_ string: String?, format: Bool = false, uppercase: Bool = false) -> String? {
-        if string?.count == 1 {
-            return string
-        }
-        if var ss = string, let char = ss.first, char == "0" {
+        if var ss = string, ss.count > 1, let char = ss.first, char == "0" {
             ss.removeFirst()
             return String(ss)
         }
