@@ -6,6 +6,7 @@ PODS:
     - PromisesSwift (>= 1.2.0)
   - Drops (1.4.0)
   - Gedatsu (1.2.0)
+  - JWTDecode (2.6.3)
   - PromisesObjC (2.0.0)
   - PromisesSwift (2.0.0):
     - PromisesObjC (= 2.0.0)
@@ -27,6 +28,7 @@ DEPENDENCIES:
   - CompositionalLayoutViewControllerViperExtension (from `https://github.com/0x0c/CompositionalLayoutViewControllerViperExtension.git`, branch `main`)
   - Drops (from `https://github.com/omaralbeik/Drops.git`)
   - Gedatsu
+  - JWTDecode
   - R.swift
   - Reusable
   - SFSafeSymbols
@@ -37,6 +39,7 @@ SPEC REPOS:
   trunk:
     - CombineExt
     - Gedatsu
+    - JWTDecode
     - PromisesObjC
     - PromisesSwift
     - R.swift
@@ -73,6 +76,7 @@ SPEC CHECKSUMS:
   CompositionalLayoutViewControllerViperExtension: ab33e1ead3ad697fe5900fffa75af5adaff3920d
   Drops: e0922898e3985a0b9329f388bd9811f9cd9f7dd0
   Gedatsu: 13a21a3cbf7978f9ff671eca5715b94a4309d9a8
+  JWTDecode: 33e5e26e5ddbd21b2065820894c08fef0cad9509
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   PromisesSwift: e0b2a6433469efb0b83a2b84c62a2abab8e5e5d4
   R.swift: ec98ff71c4ab2f6fd01dd077e5afd15e63a4834c
@@ -82,6 +86,6 @@ SPEC CHECKSUMS:
   SwiftFormat: a3b79e8b5f8ecdec7a716b998aee230d08512894
   SwiftLint: 6bc52a21f0fd44cab9aa2dc8e534fb9f5e3ec507
 
-PODFILE CHECKSUM: fc673c55526a9a71bad7dcea72c231f3136f4906
+PODFILE CHECKSUM: 51caccd471dcd3aa1b5053ad9217b90717cb21d4
 
 COCOAPODS: 1.11.2

@@ -56,6 +56,8 @@ extension AllToolsPresenter: AllToolsPresenterInput {
                 router.presentNumberBaseViewController()
             case .base64EncodeDecode:
                 router.presentBase64ViewController()
+            case .jwtDecoder:
+                router.presentJWTDecodeViewController()
             default:
                 // TODO:
                 break

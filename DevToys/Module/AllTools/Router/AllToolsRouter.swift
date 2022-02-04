@@ -13,6 +13,7 @@ protocol AllToolsRouterInput: AnyObject {
 
     func presentNumberBaseViewController()
     func presentBase64ViewController()
+    func presentJWTDecodeViewController()
 }
 
 final class AllToolsRouter {
@@ -42,5 +43,9 @@ extension AllToolsRouter: AllToolsRouterInput {
 
     func presentBase64ViewController() {
         viewController.navigationController?.pushViewController(Base64Router.assembleModule(), animated: true)
+    }
+    
+    func presentJWTDecodeViewController() {
+        viewController.navigationController?.pushViewController(JWTDecodeRouter.assembleModule(), animated: true)
     }
 }
