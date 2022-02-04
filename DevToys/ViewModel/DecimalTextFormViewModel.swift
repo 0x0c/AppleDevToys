@@ -20,6 +20,17 @@ class DecimalTextFormViewModel: TextFormViewModel {
         return string.purify(radix: 10)?.toInteger(radix: 10) != nil
     }
 
+    static func formatedString(_ string: String?, format: Bool = false) -> String? {
+        if var ss = string, let char = ss.first, char == "0" {
+            return String(ss.removeLast())
+        }
+        let str = string?.purify(radix: 10)
+        if format {
+            return str?.formatted(radix: 10)
+        }
+        return str
+    }
+
     required init(isEditable: Bool) {
         super.init(
             text: "0",
@@ -33,14 +44,7 @@ class DecimalTextFormViewModel: TextFormViewModel {
             }
         )
         self.formatHandler = { [unowned self] string in
-            if var ss = string, let char = ss.first, char == "0" {
-                return String(ss.removeLast())
-            }
-            let str = string?.purify(radix: 10)
-            if self.formatText {
-                return str?.formatted(radix: 10)
-            }
-            return str
+            return DecimalTextFormViewModel.formatedString(string, format: self.formatText)
         }
     }
 }

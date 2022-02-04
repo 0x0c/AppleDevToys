@@ -52,6 +52,10 @@ class TextFormViewModel: Hashable, TextFormAvailable {
     }
 
     func update(text: String?) {
+        guard let text = text else {
+            self.text = defaultString
+            return
+        }
         guard let handler = formatHandler else {
             self.text = text
             return

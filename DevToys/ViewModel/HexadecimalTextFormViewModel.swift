@@ -21,6 +21,23 @@ class HexadecimalTextFormViewModel: TextFormViewModel {
         return string.purify(radix: 16)?.toInteger(radix: 16) != nil
     }
 
+    static func formatedString(_ string: String?, format: Bool = false, uppercase: Bool = false) -> String? {
+        if var ss = string, let char = ss.first, char == "0" {
+            return String(ss.removeLast())
+        }
+        var numberString: String? {
+            if uppercase {
+                return string?.uppercased()
+            }
+            return string?.lowercased()
+        }
+        let str = numberString?.purify(radix: 16)
+        if format {
+            return str?.formatted(radix: 16)
+        }
+        return str
+    }
+
     required init(isEditable: Bool) {
         super.init(
             text: "0",
@@ -34,20 +51,7 @@ class HexadecimalTextFormViewModel: TextFormViewModel {
             }
         )
         self.formatHandler = { [unowned self] string in
-            if var ss = string, let char = ss.first, char == "0" {
-                return String(ss.removeLast())
-            }
-            var numberString: String? {
-                if self.uppercase {
-                    return string?.uppercased()
-                }
-                return string?.lowercased()
-            }
-            let str = numberString?.purify(radix: 16)
-            if self.formatText {
-                return str?.formatted(radix: 16)
-            }
-            return str
+            return HexadecimalTextFormViewModel.formatedString(string, format: self.formatText, uppercase: self.uppercase)
         }
     }
 }

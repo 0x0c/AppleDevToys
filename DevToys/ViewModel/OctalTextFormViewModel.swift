@@ -20,6 +20,17 @@ class OctalTextFormViewModel: TextFormViewModel {
         return string.purify(radix: 8)?.toInteger(radix: 8) != nil
     }
 
+    static func formatedString(_ string: String?, format: Bool = false) -> String? {
+        if var ss = string, let char = ss.first, char == "0" {
+            return String(ss.removeLast())
+        }
+        let str = string?.purify(radix: 8)
+        if format {
+            return str?.formatted(radix: 8)
+        }
+        return str
+    }
+
     required init(isEditable: Bool) {
         super.init(
             text: "0",
@@ -33,14 +44,7 @@ class OctalTextFormViewModel: TextFormViewModel {
             }
         )
         self.formatHandler = { [unowned self] string in
-            if var ss = string, let char = ss.first, char == "0" {
-                return String(ss.removeLast())
-            }
-            let str = string?.purify(radix: 8)
-            if self.formatText {
-                return str?.formatted(radix: 8)
-            }
-            return str
+            return OctalTextFormViewModel.formatedString(string, format: self.formatText)
         }
     }
 }

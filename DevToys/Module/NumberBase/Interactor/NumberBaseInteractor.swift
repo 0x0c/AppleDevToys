@@ -50,6 +50,20 @@ final class NumberBaseInteractor {
             case .binary:
                 return BinaryTextFormViewModel.alloewdString(string)
             }
+        }, formatHandler: { [unowned self] string in
+            guard let value = self.inputNumberTypeSelectionViewModel.selectedItem else {
+                return nil
+            }
+            switch value {
+            case .decimal:
+                return DecimalTextFormViewModel.formatedString(string)
+            case .hexadecimal:
+                return HexadecimalTextFormViewModel.formatedString(string)
+            case .octal:
+                return OctalTextFormViewModel.formatedString(string)
+            case .binary:
+                return BinaryTextFormViewModel.formatedString(string)
+            }
         }
     )
     private var decimalTextFormViewModel = DecimalTextFormViewModel(isEditable: false)
@@ -94,6 +108,9 @@ final class NumberBaseInteractor {
                 binaryTextFormViewModel
             ], headerTitle: "Binary")
         ]
+        inputNumberTypeSelectionViewModel.$selectedItem.sink { [unowned self] _ in
+            self.inputTextFormViewModel.update(text: "0")
+        }.store(in: &cancellable)
         inputTextFormViewModel.$text.removeDuplicates().sink { [unowned self] text in
             guard let value = self.inputNumberTypeSelectionViewModel.selectedItem else {
                 return
@@ -177,7 +194,7 @@ final class NumberBaseInteractor {
             isUpdating = false
             return
         }
-        inputTextFormViewModel.update(text: integer.stringfy(radix: radix, format: format))
+        inputTextFormViewModel.update(text: integer.stringfy(radix: radix))
         decimalTextFormViewModel.update(text: integer.stringfy(radix: 10, format: format))
         hexTextFormViewModel.update(text: integer.stringfy(radix: 16, format: format))
         octalTextFormViewModel.update(text: integer.stringfy(radix: 8, format: format))
