@@ -6,8 +6,8 @@
 //  Copyright © 2022 Akira Matsuda. All rights reserved.
 //
 
-import JWTDecode
 import Highlightr
+import JWTDecode
 import UIKit
 
 protocol JWTDecodeViewInput: AnyObject {
@@ -22,6 +22,7 @@ final class JWTDecodeViewController: UIViewController {
     // MARK: Computed instance properties
 
     // MARK: IBOutlets
+
     @IBOutlet private var jwtTokenTextView: UITextView!
     @IBOutlet private var headeTextView: UITextView!
     @IBOutlet private var payloadTextView: UITextView!
@@ -79,7 +80,8 @@ extension JWTDecodeViewController: UITextViewDelegate {
                 payloadTextView.attributedText = highlightr.highlight(text, as: "javascript")
             }
             signatureTextView.text = jwt.signature
-        } catch {
+        }
+        catch {
             headeTextView.text = nil
             payloadTextView.text = nil
             signatureTextView.text = nil

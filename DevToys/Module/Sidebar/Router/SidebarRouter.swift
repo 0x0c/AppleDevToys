@@ -64,7 +64,7 @@ extension SidebarRouter: SidebarRouterInput {
             )
         }
     }
-    
+
     func presentJWTDecodeViewController() {
         if viewController.splitViewController?.viewController(for: .secondary) is JWTDecodeViewInput == false {
             viewController.splitViewController?.setViewController(
