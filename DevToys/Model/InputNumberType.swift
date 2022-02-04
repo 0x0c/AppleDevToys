@@ -12,5 +12,17 @@ enum InputNumberType: String, CaseIterable {
     case hexadecimal
     case octal
     case binary
+    
+    func radix() -> Int {
+        switch self {
+        case .decimal:
+            return 10
+        case .hexadecimal:
+            return 16
+        case .octal:
+            return 8
+        case .binary:
+            return 2
+        }
+    }
 }
-

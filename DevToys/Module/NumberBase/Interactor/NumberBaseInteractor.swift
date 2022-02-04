@@ -81,23 +81,11 @@ final class NumberBaseInteractor {
             guard let value = self.inputNumberTypeSelectionViewModel.selectedItem else {
                 return
             }
-            var radix: Int {
-                switch value {
-                case .decimal:
-                    return 10
-                case .hexadecimal:
-                    return 16
-                case .octal:
-                    return 8
-                case .binary:
-                    return 2
-                }
-            }
             self.update(
                 text,
-                radix: radix,
+                radix: value.radix(),
                 format: self.formatEnabledViewModel.isOn,
-                uppercase: uppercaseEnabledViewModel.isOn
+                uppercase: self.uppercaseEnabledViewModel.isOn
             )
         }.store(in: &cancellable)
         decimalTextFormViewModel.$text.removeDuplicates().sink { [unowned self] text in
@@ -105,7 +93,7 @@ final class NumberBaseInteractor {
                 text,
                 radix: 10,
                 format: self.formatEnabledViewModel.isOn,
-                uppercase: uppercaseEnabledViewModel.isOn
+                uppercase: self.uppercaseEnabledViewModel.isOn
             )
         }.store(in: &cancellable)
         hexTextFormViewModel.$text.removeDuplicates().sink { [unowned self] text in
@@ -113,7 +101,7 @@ final class NumberBaseInteractor {
                 text,
                 radix: 16,
                 format: self.formatEnabledViewModel.isOn,
-                uppercase: uppercaseEnabledViewModel.isOn
+                uppercase: self.uppercaseEnabledViewModel.isOn
             )
         }.store(in: &cancellable)
         octalTextFormViewModel.$text.removeDuplicates().sink { [unowned self] text in
@@ -121,7 +109,7 @@ final class NumberBaseInteractor {
                 text,
                 radix: 8,
                 format: self.formatEnabledViewModel.isOn,
-                uppercase: uppercaseEnabledViewModel.isOn
+                uppercase: self.uppercaseEnabledViewModel.isOn
             )
         }.store(in: &cancellable)
         binaryTextFormViewModel.$text.removeDuplicates().sink { [unowned self] text in
@@ -129,7 +117,7 @@ final class NumberBaseInteractor {
                 text,
                 radix: 2,
                 format: self.formatEnabledViewModel.isOn,
-                uppercase: uppercaseEnabledViewModel.isOn
+                uppercase: self.uppercaseEnabledViewModel.isOn
             )
         }.store(in: &cancellable)
 
