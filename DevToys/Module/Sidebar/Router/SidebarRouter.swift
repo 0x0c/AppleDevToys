@@ -54,7 +54,7 @@ extension SidebarRouter: SidebarRouterInput {
             )
         }
     }
-    
+
     func presentBase64ViewController() {
         if viewController.splitViewController?.viewController(for: .secondary) is Base64ViewInput == false {
             viewController.splitViewController?.setViewController(
