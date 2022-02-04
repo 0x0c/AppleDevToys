@@ -27,6 +27,7 @@ final class AllToolsViewController: CompositionalLayoutViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.contentInset.bottom = 44
         provider = self
         presenter.viewDidLoad()
     }
