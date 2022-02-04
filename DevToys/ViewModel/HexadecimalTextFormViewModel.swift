@@ -50,7 +50,7 @@ class HexadecimalTextFormViewModel: TextFormViewModel {
                 return HexadecimalTextFormViewModel.alloewdString(string)
             }
         )
-        self.formatHandler = { [unowned self] string in
+        formatHandler = { [unowned self] string in
             return HexadecimalTextFormViewModel.formatedString(string, format: self.formatText, uppercase: self.uppercase)
         }
     }

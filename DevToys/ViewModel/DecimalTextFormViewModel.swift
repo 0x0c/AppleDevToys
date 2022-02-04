@@ -43,7 +43,7 @@ class DecimalTextFormViewModel: TextFormViewModel {
                 return DecimalTextFormViewModel.alloewdString(string)
             }
         )
-        self.formatHandler = { [unowned self] string in
+        formatHandler = { [unowned self] string in
             return DecimalTextFormViewModel.formatedString(string, format: self.formatText)
         }
     }

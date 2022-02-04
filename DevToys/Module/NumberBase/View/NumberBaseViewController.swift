@@ -41,6 +41,7 @@ final class NumberBaseViewController: CompositionalLayoutViewController {
         configuration.interSectionSpacing = 16
         return configuration
     }
+
     // MARK: Other private methods
 }
 

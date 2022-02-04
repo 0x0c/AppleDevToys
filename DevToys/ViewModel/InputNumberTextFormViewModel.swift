@@ -18,7 +18,7 @@ class InputNumberTextFormViewModel: TextFormViewModel {
             ),
             defaultString: "0"
         )
-        self.allowedStringHandler = { [unowned self] string in
+        allowedStringHandler = { [unowned self] string in
             guard let value = self.selectedItem else {
                 return false
             }
@@ -33,7 +33,7 @@ class InputNumberTextFormViewModel: TextFormViewModel {
                 return BinaryTextFormViewModel.alloewdString(string)
             }
         }
-        self.formatHandler = { [unowned self] string in
+        formatHandler = { [unowned self] string in
             guard let value = self.selectedItem else {
                 return nil
             }

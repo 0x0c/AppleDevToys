@@ -27,7 +27,7 @@ class InputNumberTypeSelectionCellViewModel: PulldownSelectableItemViewModel<Inp
     let detail: String
 
     init() {
-        self.detail = "Select which type you want to use"
+        detail = "Select which type you want to use"
         super.init(
             title: "Input type",
             iconImage: UIImage(systemSymbol: .arrowLeftArrowRight),

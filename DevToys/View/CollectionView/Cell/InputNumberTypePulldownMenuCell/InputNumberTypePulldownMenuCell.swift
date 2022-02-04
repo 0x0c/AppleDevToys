@@ -6,8 +6,8 @@
 //
 
 import Combine
-import UIKit
 import Reusable
+import UIKit
 
 class InputNumberTypePulldownMenuCell: UICollectionViewCell, NibReusable {
     @IBOutlet private var titleLabel: UILabel!

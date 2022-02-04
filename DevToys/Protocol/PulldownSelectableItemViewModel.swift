@@ -22,7 +22,7 @@ class PulldownSelectableItemViewModel<Value: PulldownableItem> {
         self.title = title
         self.iconImage = iconImage
         self.selectableItems = selectableItems
-        self.selectedItem = initialSelection
+        selectedItem = initialSelection
     }
 
     func currentSelectionTitle() -> String? {

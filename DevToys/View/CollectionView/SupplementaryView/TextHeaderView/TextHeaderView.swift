@@ -5,8 +5,8 @@
 //  Created by Akira Matsuda on 2022/02/04.
 //
 
-import UIKit
 import Reusable
+import UIKit
 
 class TextHeaderView: UICollectionReusableView, NibReusable {
     static let defaultHeight: CGFloat = 24

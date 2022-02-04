@@ -43,7 +43,7 @@ final class SidebarViewController: CompositionalLayoutViewController {
     override func updateDataSource(_ sections: [CollectionViewSection], animateWhenUpdate: Bool = true) {
         registerViews(sections)
         var snapshot = NSDiffableDataSourceSnapshot<AnyHashable, AnyHashable>()
-        snapshot.appendSections(sections.map { $0.snapshotSection })
+        snapshot.appendSections(sections.map { section in section.snapshotSection })
         dataSource.apply(snapshot, animatingDifferences: false)
 
         for section in sections {

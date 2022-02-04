@@ -6,8 +6,8 @@
 //
 
 import Combine
-import UIKit
 import Reusable
+import UIKit
 
 class SwitchCell: UICollectionViewCell, NibReusable {
     static let defaultHeight: CGFloat = 44

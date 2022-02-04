@@ -10,6 +10,7 @@ import UIKit
 
 protocol AllToolsRouterInput: AnyObject {
     // MARK: View transitions
+
     func presentNumberBaseViewController()
 }
 

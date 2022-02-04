@@ -43,7 +43,7 @@ class OctalTextFormViewModel: TextFormViewModel {
                 return OctalTextFormViewModel.alloewdString(string)
             }
         )
-        self.formatHandler = { [unowned self] string in
+        formatHandler = { [unowned self] string in
             return OctalTextFormViewModel.formatedString(string, format: self.formatText)
         }
     }

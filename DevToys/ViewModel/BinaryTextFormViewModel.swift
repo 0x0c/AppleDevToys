@@ -16,6 +16,7 @@ class BinaryTextFormViewModel: TextFormViewModel {
         }
         return string.purify(radix: 2)?.toInteger(radix: 2) != nil
     }
+
     static func formatedString(_ string: String?, format: Bool = false) -> String? {
         let str = string?.purify(radix: 2)
         if format {
@@ -36,7 +37,7 @@ class BinaryTextFormViewModel: TextFormViewModel {
                 return BinaryTextFormViewModel.alloewdString(string)
             }
         )
-        self.formatHandler = { [unowned self] string in
+        formatHandler = { [unowned self] string in
             return BinaryTextFormViewModel.formatedString(string, format: self.formatText)
         }
     }

@@ -34,6 +34,7 @@ class TextFormSection: CollectionViewSection, DefaultSupplementalViewProvider {
     var snapshotItems: [AnyHashable] {
         return items as! [AnyHashable]
     }
+
     private var cellHeight: CGFloat
     let items: [TextFormAvailable]
 

@@ -46,6 +46,7 @@ final class NumberBaseInteractor {
         title: "Uppercase",
         image: UIImage(systemSymbol: .textformat)
     )
+
     // MARK: Computed instance properties
 
     // MARK: Initializer
@@ -135,6 +136,7 @@ final class NumberBaseInteractor {
     }
 
     // MARK: Other private methods
+
     private func update(_ text: String?, radix: Int, format: Bool, uppercase: Bool) {
         if isUpdating {
             return
@@ -142,9 +144,8 @@ final class NumberBaseInteractor {
         isUpdating = true
 
         guard let text = text,
-            let pureString = text.purify(radix: radix),
-            let integer = Int(pureString, radix: radix)
-        else {
+              let pureString = text.purify(radix: radix),
+              let integer = Int(pureString, radix: radix) else {
             isUpdating = false
             return
         }
