@@ -61,6 +61,8 @@ extension SidebarPresenter: SidebarPresenterInput {
                     router.presentBase64ViewController()
                 case .jwtDecoder:
                     router.presentJWTDecodeViewController()
+                case .uuidGenerator:
+                    router.presentUUIDViewController()
                 default:
                     // TODO: 画面切り替え
                     print(item)

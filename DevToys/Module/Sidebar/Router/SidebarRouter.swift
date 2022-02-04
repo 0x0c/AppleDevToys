@@ -15,6 +15,7 @@ protocol SidebarRouterInput: AnyObject {
     func presentNumberBaseViewController()
     func presentBase64ViewController()
     func presentJWTDecodeViewController()
+    func presentUUIDViewController()
 }
 
 final class SidebarRouter {
@@ -69,6 +70,15 @@ extension SidebarRouter: SidebarRouterInput {
         if viewController.splitViewController?.viewController(for: .secondary) is JWTDecodeViewInput == false {
             viewController.splitViewController?.setViewController(
                 UINavigationController(rootViewController: JWTDecodeRouter.assembleModule()),
+                for: .secondary
+            )
+        }
+    }
+
+    func presentUUIDViewController() {
+        if viewController.splitViewController?.viewController(for: .secondary) is UUIDViewInput == false {
+            viewController.splitViewController?.setViewController(
+                UINavigationController(rootViewController: UUIDRouter.assembleModule()),
                 for: .secondary
             )
         }

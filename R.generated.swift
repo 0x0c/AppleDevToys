@@ -89,7 +89,7 @@ struct R: Rswift.Validatable {
   }
 
   #if os(iOS) || os(tvOS)
-  /// This `R.storyboard` struct is generated, and contains static references to 4 storyboards.
+  /// This `R.storyboard` struct is generated, and contains static references to 5 storyboards.
   struct storyboard {
     /// Storyboard `Base64ViewController`.
     static let base64ViewController = _R.storyboard.base64ViewController()
@@ -99,6 +99,8 @@ struct R: Rswift.Validatable {
     static let launchScreen = _R.storyboard.launchScreen()
     /// Storyboard `Main`.
     static let main = _R.storyboard.main()
+    /// Storyboard `UUIDViewController`.
+    static let uuidViewController = _R.storyboard.uuidViewController()
 
     #if os(iOS) || os(tvOS)
     /// `UIStoryboard(name: "Base64ViewController", bundle: ...)`
@@ -125,6 +127,13 @@ struct R: Rswift.Validatable {
     /// `UIStoryboard(name: "Main", bundle: ...)`
     static func main(_: Void = ()) -> UIKit.UIStoryboard {
       return UIKit.UIStoryboard(resource: R.storyboard.main)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIStoryboard(name: "UUIDViewController", bundle: ...)`
+    static func uuidViewController(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.uuidViewController)
     }
     #endif
 
@@ -395,6 +404,9 @@ struct _R: Rswift.Validatable {
       #if os(iOS) || os(tvOS)
       try main.validate()
       #endif
+      #if os(iOS) || os(tvOS)
+      try uuidViewController.validate()
+      #endif
     }
 
     #if os(iOS) || os(tvOS)
@@ -414,7 +426,9 @@ struct _R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    struct jwtDecodeViewController: Rswift.StoryboardResourceType, Rswift.Validatable {
+    struct jwtDecodeViewController: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
+      typealias InitialController = JWTDecodeViewController
+
       let bundle = R.hostingBundle
       let name = "JWTDecodeViewController"
 
@@ -451,6 +465,25 @@ struct _R: Rswift.Validatable {
       let name = "Main"
 
       static func validate() throws {
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+      }
+
+      fileprivate init() {}
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    struct uuidViewController: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
+      typealias InitialController = UUIDViewController
+
+      let bundle = R.hostingBundle
+      let name = "UUIDViewController"
+
+      static func validate() throws {
+        if #available(iOS 13.0, *) { if UIKit.UIImage(systemName: "minus") == nil { throw Rswift.ValidationError(description: "[R.swift] System image named 'minus' is used in storyboard 'UUIDViewController', but couldn't be loaded.") } }
+        if #available(iOS 13.0, *) { if UIKit.UIImage(systemName: "textformat") == nil { throw Rswift.ValidationError(description: "[R.swift] System image named 'textformat' is used in storyboard 'UUIDViewController', but couldn't be loaded.") } }
+        if #available(iOS 13.0, *) { if UIKit.UIImage(systemName: "xmark") == nil { throw Rswift.ValidationError(description: "[R.swift] System image named 'xmark' is used in storyboard 'UUIDViewController', but couldn't be loaded.") } }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
       }

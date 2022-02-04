@@ -11,15 +11,11 @@ class BinaryTextFormViewModel: TextFormViewModel {
     var formatText = false
 
     static func alloewdString(_ string: String) -> Bool {
-        return string.replacingOccurrences(of: " ", with: "").purify(radix: 2)?.toInteger(radix: 2) != nil
+        return BinaryStringValidator.isValid(string)
     }
 
     static func formatedString(_ string: String?, format: Bool = false) -> String? {
-        let str = string?.replacingOccurrences(of: " ", with: "").purify(radix: 2)
-        if format {
-            return str?.formatted(radix: 2)
-        }
-        return str
+        return BinaryStringFormatter.purify(string, format: format)
     }
 
     required init(isEditable: Bool) {

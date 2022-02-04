@@ -14,6 +14,7 @@ protocol AllToolsRouterInput: AnyObject {
     func presentNumberBaseViewController()
     func presentBase64ViewController()
     func presentJWTDecodeViewController()
+    func presentUUIDViewController()
 }
 
 final class AllToolsRouter {
@@ -47,5 +48,9 @@ extension AllToolsRouter: AllToolsRouterInput {
 
     func presentJWTDecodeViewController() {
         viewController.navigationController?.pushViewController(JWTDecodeRouter.assembleModule(), animated: true)
+    }
+
+    func presentUUIDViewController() {
+        viewController.navigationController?.pushViewController(UUIDRouter.assembleModule(), animated: true)
     }
 }
