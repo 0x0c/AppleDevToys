@@ -57,12 +57,12 @@ extension JWTDecodeViewController: UITextViewDelegate {
             let jwt = try decode(jwt: textView.text)
             let headerObject = try JSONSerialization.data(
                 withJSONObject: jwt.header,
-                options: [.prettyPrinted]
+                options: [.prettyPrinted, .sortedKeys]
             )
             headeTextView.text = String(bytes: headerObject, encoding: .utf8)
             let bodyObject = try JSONSerialization.data(
                 withJSONObject: jwt.body,
-                options: [.prettyPrinted]
+                options: [.prettyPrinted, .sortedKeys]
             )
             payloadTextView.text = String(bytes: bodyObject, encoding: .utf8)
             signatureTextView.text = jwt.signature
