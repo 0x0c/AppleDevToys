@@ -23,7 +23,7 @@ extension TextFormSection {
     static let performResignFirstResponder = Notification.Name("TextFormSection.performResignFirstResponder")
 }
 
-final class TextFormSection: CollectionViewSection {
+class TextFormSection: CollectionViewSection, DefaultSupplementalViewProvider {
     static func resignFirstResponder() {
         NotificationCenter.default.post(
             name: TextFormSection.performResignFirstResponder,
@@ -68,7 +68,6 @@ final class TextFormSection: CollectionViewSection {
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 12
         section.contentInsets = Constant.defaultSectionInsets
-        section.supplementariesFollowContentInsets = false
         return section
     }
 
@@ -80,8 +79,4 @@ final class TextFormSection: CollectionViewSection {
     }
 
     func configureSupplementaryView(_ view: UICollectionReusableView, indexPath: IndexPath) {}
-    
-    func supplementaryView(_ collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? {
-        return nil
-    }
 }

@@ -54,12 +54,18 @@ final class NumberBaseInteractor {
                 .toggle(formatEnabledViewModel),
                 .toggle(uppercaseEnabledViewModel)
             ]),
-            TextFormSection.form([
-                decimalTextFormViewModel,
-                hexTextFormViewModel,
-                octalTextFormViewModel,
+            NumberInputFormSection.form([
+                decimalTextFormViewModel
+            ], headerTitle: "Decimal"),
+            NumberInputFormSection.form([
+                hexTextFormViewModel
+            ], headerTitle: "Hex"),
+            NumberInputFormSection.form([
+                octalTextFormViewModel
+            ], headerTitle: "Octal"),
+            NumberInputFormSection.form([
                 binaryTextFormViewModel
-            ], cellHeight: 30)
+            ], headerTitle: "Binary")
         ]
 
         decimalTextFormViewModel.$text.removeDuplicates().sink { [unowned self] text in

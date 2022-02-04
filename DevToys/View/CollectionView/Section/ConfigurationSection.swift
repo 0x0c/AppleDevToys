@@ -9,7 +9,7 @@ import CompositionalLayoutViewController
 import Reusable
 import UIKit
 
-final class ConfigurationSection: CollectionViewSection {
+final class ConfigurationSection: CollectionViewSection, DefaultSupplementalViewProvider {
     var snapshotItems: [AnyHashable] {
         return items
     }
@@ -24,7 +24,9 @@ final class ConfigurationSection: CollectionViewSection {
         collectionView.register(cellType: SwitchCell.self)
     }
 
-    func registerSupplementaryView(collectionView: UICollectionView) {}
+    func registerSupplementaryView(collectionView: UICollectionView) {
+        collectionView.register(supplementaryViewType: TextHeaderView.self, ofKind: TextHeaderView.elementKind)
+    }
 
     func layoutSection(environment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(
@@ -45,6 +47,10 @@ final class ConfigurationSection: CollectionViewSection {
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 8
         section.contentInsets = Constant.defaultSectionInsets
+        section.contentInsets.top = 8
+        section.boundarySupplementaryItems = [
+            TextHeaderView.supplementaryItem()
+        ]
         return section
     }
 
@@ -58,9 +64,9 @@ final class ConfigurationSection: CollectionViewSection {
         }
     }
 
-    func configureSupplementaryView(_ view: UICollectionReusableView, indexPath: IndexPath) {}
-
-    func supplementaryView(_ collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? {
-        return nil
+    func configureSupplementaryView(_ view: UICollectionReusableView, indexPath: IndexPath) {
+        if let view = view as? TextHeaderView {
+            view.text = "Configuration"
+        }
     }
 }
