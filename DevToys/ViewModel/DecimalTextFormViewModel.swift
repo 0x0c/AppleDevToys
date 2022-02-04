@@ -11,20 +11,21 @@ class DecimalTextFormViewModel: TextFormViewModel {
     var formatText = false
 
     static func alloewdString(_ string: String) -> Bool {
-        if string.contains(" ") {
-            return false
-        }
         if string == "00" {
             return false
         }
-        return string.purify(radix: 10)?.toInteger(radix: 10) != nil
+        return string.replacingOccurrences(of: " ", with: "").purify(radix: 10)?.toInteger(radix: 10) != nil
     }
 
     static func formatedString(_ string: String?, format: Bool = false) -> String? {
-        if var ss = string, let char = ss.first, char == "0" {
-            return String(ss.removeLast())
+        if string?.count == 1 {
+            return string
         }
-        let str = string?.purify(radix: 10)
+        if var ss = string, let char = ss.first, char == "0" {
+            ss.removeFirst()
+            return String(ss)
+        }
+        let str = string?.replacingOccurrences(of: " ", with: "").purify(radix: 10)
         if format {
             return str?.formatted(radix: 10)
         }

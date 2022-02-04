@@ -89,38 +89,6 @@ final class NumberBaseInteractor {
                 uppercase: self.uppercaseEnabled.isOn
             )
         }.store(in: &cancellable)
-        decimalTextForm.$text.removeDuplicates().sink { [unowned self] text in
-            self.update(
-                text,
-                radix: 10,
-                format: self.formatEnabled.isOn,
-                uppercase: self.uppercaseEnabled.isOn
-            )
-        }.store(in: &cancellable)
-        hexTextForm.$text.removeDuplicates().sink { [unowned self] text in
-            self.update(
-                text,
-                radix: 16,
-                format: self.formatEnabled.isOn,
-                uppercase: self.uppercaseEnabled.isOn
-            )
-        }.store(in: &cancellable)
-        octalTextForm.$text.removeDuplicates().sink { [unowned self] text in
-            self.update(
-                text,
-                radix: 8,
-                format: self.formatEnabled.isOn,
-                uppercase: self.uppercaseEnabled.isOn
-            )
-        }.store(in: &cancellable)
-        binaryTextForm.$text.removeDuplicates().sink { [unowned self] text in
-            self.update(
-                text,
-                radix: 2,
-                format: self.formatEnabled.isOn,
-                uppercase: self.uppercaseEnabled.isOn
-            )
-        }.store(in: &cancellable)
 
         formatEnabled.$isOn.sink { [unowned self] enabled in
             self.decimalTextForm.formatText = enabled
@@ -158,9 +126,12 @@ final class NumberBaseInteractor {
     }
 
     private func reload(format: Bool, uppercase: Bool) {
+        guard let value = inputNumberTypeSelection.selectedItem else {
+            return
+        }
         update(
-            decimalTextForm.text,
-            radix: 10,
+            inputTextForm.text,
+            radix: value.radix(),
             format: format,
             uppercase: uppercase
         )

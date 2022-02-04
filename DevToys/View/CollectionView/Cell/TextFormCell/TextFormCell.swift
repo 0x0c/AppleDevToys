@@ -103,8 +103,14 @@ final class TextFormCell: UICollectionViewCell, NibReusable, TextFormCellProtoco
     @objc
     private func didTextUpdate() {
         if let viewModel = viewModel as? TextFormViewModel {
-            if let text = textField.text, text.isEmpty {
-                textField.text = viewModel.defaultString
+            if textField.text == nil {
+                textField.text = viewModel.update(text: viewModel.defaultString)
+            }
+            else if let text = textField.text, text.isEmpty {
+                textField.text = viewModel.update(text: viewModel.defaultString)
+            }
+            else {
+                textField.text = viewModel.update(text: textField.text)
             }
         }
     }
@@ -119,23 +125,10 @@ extension TextFormCell: UITextFieldDelegate {
         if string.isEmpty {
             return true
         }
-        var currentText: String {
-            if let text = textField.text {
-                return text
-            }
-            return ""
-        }
-        let newString = currentText.appending(string)
         guard let handler = viewModel.allowedStringHandler else {
-            viewModel.update(text: newString)
-            textField.text = viewModel.text
             return false
         }
-        if handler(newString) {
-            viewModel.update(text: newString)
-            textField.text = viewModel.text
-        }
-        return false
+        return handler(string)
     }
 
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {

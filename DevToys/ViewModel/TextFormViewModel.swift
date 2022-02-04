@@ -51,15 +51,17 @@ class TextFormViewModel: Hashable, TextFormAvailable {
         self.validationAppearance = validationAppearance
     }
 
-    func update(text: String?) {
+    @discardableResult
+    func update(text: String?) -> String? {
         guard let text = text else {
             self.text = defaultString
-            return
+            return self.text
         }
         guard let handler = formatHandler else {
             self.text = text
-            return
+            return self.text
         }
         self.text = handler(text)
+        return self.text
     }
 }

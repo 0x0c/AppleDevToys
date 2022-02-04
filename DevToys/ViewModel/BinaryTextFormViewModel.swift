@@ -11,14 +11,11 @@ class BinaryTextFormViewModel: TextFormViewModel {
     var formatText = false
 
     static func alloewdString(_ string: String) -> Bool {
-        if string.contains(" ") {
-            return false
-        }
-        return string.purify(radix: 2)?.toInteger(radix: 2) != nil
+        return string.replacingOccurrences(of: " ", with: "").purify(radix: 2)?.toInteger(radix: 2) != nil
     }
 
     static func formatedString(_ string: String?, format: Bool = false) -> String? {
-        let str = string?.purify(radix: 2)
+        let str = string?.replacingOccurrences(of: " ", with: "").purify(radix: 2)
         if format {
             return str?.formatted(radix: 2)
         }
