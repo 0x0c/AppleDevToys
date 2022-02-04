@@ -47,6 +47,7 @@ final class JWTDecodeViewController: UIViewController {
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "JWT Decode"
+        jwtTokenTextView.font = .monospacedSystemFont(ofSize: 14, weight: .regular)
         jwtTokenTextView.delegate = self
         jwtTokenTextViewBaseView.layer.cornerRadius = Constant.defaultCornerRadius
         headerTextViewBaseView.layer.cornerRadius = Constant.defaultCornerRadius

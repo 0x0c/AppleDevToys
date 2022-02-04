@@ -35,6 +35,8 @@ final class Base64ViewController: UIViewController {
         title = "Base64 Encode / Decode"
         encodedTextBaseView.layer.cornerRadius = Constant.defaultCornerRadius
         decodedTextBaseView.layer.cornerRadius = Constant.defaultCornerRadius
+        encodedTextView.font = .monospacedSystemFont(ofSize: 14, weight: .regular)
+        decodedTextView.font = .monospacedSystemFont(ofSize: 14, weight: .regular)
         encodedTextView.delegate = self
         decodedTextView.delegate = self
         presenter.viewDidLoad()
