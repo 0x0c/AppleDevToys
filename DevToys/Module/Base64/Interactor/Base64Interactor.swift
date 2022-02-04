@@ -6,8 +6,6 @@
 //  Copyright © 2022 Akira Matsuda. All rights reserved.
 //
 
-import CompositionalLayoutViewController
-import CompositionalLayoutViewControllerViperExtension
 import Foundation
 
 protocol Base64InteractorInput: AnyObject {
