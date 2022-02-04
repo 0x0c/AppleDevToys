@@ -7,6 +7,7 @@
 //
 
 import JWTDecode
+import Highlightr
 import UIKit
 
 protocol JWTDecodeViewInput: AnyObject {
@@ -30,6 +31,13 @@ final class JWTDecodeViewController: UIViewController {
     @IBOutlet private var headerTextViewBaseView: UIView!
     @IBOutlet private var payloadTextViewBaseView: UIView!
     @IBOutlet private var signatureTextViewBaseView: UIView!
+
+    private var highlightr: Highlightr! {
+        let highlightr = Highlightr()
+        highlightr!.setTheme(to: "paraiso-dark")
+        highlightr!.theme.setCodeFont(.monospacedSystemFont(ofSize: 12, weight: .regular))
+        return highlightr
+    }
 
     // MARK: View Life-Cycle methods
 
@@ -59,12 +67,17 @@ extension JWTDecodeViewController: UITextViewDelegate {
                 withJSONObject: jwt.header,
                 options: [.prettyPrinted, .sortedKeys]
             )
-            headeTextView.text = String(bytes: headerObject, encoding: .utf8)
+            if let text = String(bytes: headerObject, encoding: .utf8) {
+                headeTextView.attributedText = highlightr.highlight(text, as: "javascript")
+            }
+
             let bodyObject = try JSONSerialization.data(
                 withJSONObject: jwt.body,
                 options: [.prettyPrinted, .sortedKeys]
             )
-            payloadTextView.text = String(bytes: bodyObject, encoding: .utf8)
+            if let text = String(bytes: bodyObject, encoding: .utf8) {
+                payloadTextView.attributedText = highlightr.highlight(text, as: "javascript")
+            }
             signatureTextView.text = jwt.signature
         } catch {
             headeTextView.text = nil

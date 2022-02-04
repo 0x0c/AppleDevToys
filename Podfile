@@ -11,8 +11,10 @@ target 'DevToys' do
   pod 'CompositionalLayoutViewControllerViperExtension', :git => 'https://github.com/0x0c/CompositionalLayoutViewControllerViperExtension.git', :branch => 'main'
   pod 'Drops', :git => 'https://github.com/omaralbeik/Drops.git'
   pod 'Gedatsu', :configuration => ['Debug']
+  pod 'Highlightr'
   pod 'JWTDecode'
   pod 'Reusable'
+  pod 'SnapKit'
   pod 'SFSafeSymbols'
 
   pod 'SwiftLint'

@@ -6,6 +6,7 @@ PODS:
     - PromisesSwift (>= 1.2.0)
   - Drops (1.4.0)
   - Gedatsu (1.2.0)
+  - Highlightr (2.1.0)
   - JWTDecode (2.6.3)
   - PromisesObjC (2.0.0)
   - PromisesSwift (2.0.0):
@@ -19,6 +20,7 @@ PODS:
   - Reusable/Storyboard (4.1.2)
   - Reusable/View (4.1.2)
   - SFSafeSymbols (2.1.3)
+  - SnapKit (5.0.1)
   - SwiftFormat/CLI (0.49.3)
   - SwiftLint (0.46.2)
 
@@ -28,10 +30,12 @@ DEPENDENCIES:
   - CompositionalLayoutViewControllerViperExtension (from `https://github.com/0x0c/CompositionalLayoutViewControllerViperExtension.git`, branch `main`)
   - Drops (from `https://github.com/omaralbeik/Drops.git`)
   - Gedatsu
+  - Highlightr
   - JWTDecode
   - R.swift
   - Reusable
   - SFSafeSymbols
+  - SnapKit
   - SwiftFormat/CLI
   - SwiftLint
 
@@ -39,6 +43,7 @@ SPEC REPOS:
   trunk:
     - CombineExt
     - Gedatsu
+    - Highlightr
     - JWTDecode
     - PromisesObjC
     - PromisesSwift
@@ -46,6 +51,7 @@ SPEC REPOS:
     - R.swift.Library
     - Reusable
     - SFSafeSymbols
+    - SnapKit
     - SwiftFormat
     - SwiftLint
 
@@ -76,6 +82,7 @@ SPEC CHECKSUMS:
   CompositionalLayoutViewControllerViperExtension: ab33e1ead3ad697fe5900fffa75af5adaff3920d
   Drops: e0922898e3985a0b9329f388bd9811f9cd9f7dd0
   Gedatsu: 13a21a3cbf7978f9ff671eca5715b94a4309d9a8
+  Highlightr: 595f3e100737c8de41113385da8bd0b5b65212c6
   JWTDecode: 33e5e26e5ddbd21b2065820894c08fef0cad9509
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   PromisesSwift: e0b2a6433469efb0b83a2b84c62a2abab8e5e5d4
@@ -83,9 +90,10 @@ SPEC CHECKSUMS:
   R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
   Reusable: 6bae6a5e8aa793c9c441db0213c863a64bce9136
   SFSafeSymbols: 1c2d431b9e5ed20cd92a4ac303427f780d3354a3
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftFormat: a3b79e8b5f8ecdec7a716b998aee230d08512894
   SwiftLint: 6bc52a21f0fd44cab9aa2dc8e534fb9f5e3ec507
 
-PODFILE CHECKSUM: 51caccd471dcd3aa1b5053ad9217b90717cb21d4
+PODFILE CHECKSUM: 1d0a56f6b3e95d1524380e163274f7998ff1b4b9
 
 COCOAPODS: 1.11.2
