@@ -54,6 +54,8 @@ extension AllToolsPresenter: AllToolsPresenterInput {
             switch section.items[indexPath.row].toolItem {
             case .numberBase:
                 router.presentNumberBaseViewController()
+            case .base64EncodeDecode:
+                router.presentBase64ViewController()
             default:
                 // TODO:
                 break

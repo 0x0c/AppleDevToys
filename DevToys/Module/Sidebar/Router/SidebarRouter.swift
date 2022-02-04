@@ -13,6 +13,7 @@ protocol SidebarRouterInput: AnyObject {
 
     func presentAllToolsViewController()
     func presentNumberBaseViewController()
+    func presentBase64ViewController()
 }
 
 final class SidebarRouter {
@@ -49,6 +50,15 @@ extension SidebarRouter: SidebarRouterInput {
         if viewController.splitViewController?.viewController(for: .secondary) is NumberBaseViewInput == false {
             viewController.splitViewController?.setViewController(
                 UINavigationController(rootViewController: NumberBaseRouter.assembleModule()),
+                for: .secondary
+            )
+        }
+    }
+    
+    func presentBase64ViewController() {
+        if viewController.splitViewController?.viewController(for: .secondary) is Base64ViewInput == false {
+            viewController.splitViewController?.setViewController(
+                UINavigationController(rootViewController: Base64Router.assembleModule()),
                 for: .secondary
             )
         }

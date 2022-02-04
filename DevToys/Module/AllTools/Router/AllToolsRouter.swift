@@ -12,6 +12,7 @@ protocol AllToolsRouterInput: AnyObject {
     // MARK: View transitions
 
     func presentNumberBaseViewController()
+    func presentBase64ViewController()
 }
 
 final class AllToolsRouter {
@@ -37,5 +38,9 @@ final class AllToolsRouter {
 extension AllToolsRouter: AllToolsRouterInput {
     func presentNumberBaseViewController() {
         viewController.navigationController?.pushViewController(NumberBaseRouter.assembleModule(), animated: true)
+    }
+
+    func presentBase64ViewController() {
+        viewController.navigationController?.pushViewController(Base64Router.assembleModule(), animated: true)
     }
 }
