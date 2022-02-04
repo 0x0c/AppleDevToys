@@ -9,4 +9,5 @@ import Foundation
 
 enum ConfigurationItem: Hashable {
     case toggle(SwitchCellViewModel)
+    case inputNumberType(InputNumberTypeSelectionCellViewModel)
 }

@@ -9,6 +9,7 @@ import UIKit
 
 struct TextForm: Hashable {
     var placeholder: String?
+    var isEditable = true
     var isSecureTextEntry = false
     var keyboardType: UIKeyboardType = .default
     var spellCheckingType: UITextSpellCheckingType = .default

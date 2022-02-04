@@ -36,7 +36,8 @@ extension String {
             }
             return nil
         }
-        return chunked(into: 4).joined(separator: " ")
+
+        return String(reversed()).chunked(into: 4).reversed().joined(separator: " ")
     }
 
     func toInteger(radix: Int) -> Int? {

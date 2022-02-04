@@ -11,18 +11,26 @@ class HexadecimalTextFormViewModel: TextFormViewModel {
     var formatText = false
     var uppercase = false
 
-    required init() {
+    static func alloewdString(_ string: String) -> Bool {
+        if string.contains(" ") {
+            return false
+        }
+        if string == "00" {
+            return false
+        }
+        return string.purify(radix: 16)?.toInteger(radix: 16) != nil
+    }
+
+    required init(isEditable: Bool) {
         super.init(
             text: "0",
             textForm: TextForm(
-                placeholder: "Hex"
+                placeholder: "Hex",
+                isEditable: isEditable
             ),
             defaultString: "0",
             allowedStringHandler: { string in
-                if string == "00" {
-                    return false
-                }
-                return string.purify(radix: 16)?.toInteger(radix: 16) != nil
+                return HexadecimalTextFormViewModel.alloewdString(string)
             }
         )
         self.formatHandler = { [unowned self] string in

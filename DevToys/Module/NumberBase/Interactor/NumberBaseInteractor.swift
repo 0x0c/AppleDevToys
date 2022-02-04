@@ -29,10 +29,33 @@ final class NumberBaseInteractor {
     var sections: [CollectionViewSection] = []
     private var cancellable = Set<AnyCancellable>()
 
-    private lazy var decimalTextFormViewModel = DecimalTextFormViewModel()
-    private lazy var hexTextFormViewModel = HexadecimalTextFormViewModel()
-    private lazy var octalTextFormViewModel = OctalTextFormViewModel()
-    private lazy var binaryTextFormViewModel = BinaryTextFormViewModel()
+    private var inputNumberTypeSelectionViewModel = InputNumberTypeSelectionCellViewModel()
+    private lazy var inputTextFormViewModel = TextFormViewModel(
+        text: "0",
+        textForm: TextForm(
+            placeholder: "Input"
+        ),
+        defaultString: "0",
+        allowedStringHandler: { [unowned self] string in
+            guard let value = self.inputNumberTypeSelectionViewModel.selectedItem else {
+                return false
+            }
+            switch value {
+            case .decimal:
+                return DecimalTextFormViewModel.alloewdString(string)
+            case .hexadecimal:
+                return HexadecimalTextFormViewModel.alloewdString(string)
+            case .octal:
+                return OctalTextFormViewModel.alloewdString(string)
+            case .binary:
+                return BinaryTextFormViewModel.alloewdString(string)
+            }
+        }
+    )
+    private var decimalTextFormViewModel = DecimalTextFormViewModel(isEditable: false)
+    private var hexTextFormViewModel = HexadecimalTextFormViewModel(isEditable: false)
+    private var octalTextFormViewModel = OctalTextFormViewModel(isEditable: false)
+    private var binaryTextFormViewModel = BinaryTextFormViewModel(isEditable: false)
 
     private var isUpdating = false
 
@@ -52,8 +75,12 @@ final class NumberBaseInteractor {
         sections = [
             ConfigurationSection(items: [
                 .toggle(formatEnabledViewModel),
-                .toggle(uppercaseEnabledViewModel)
+                .toggle(uppercaseEnabledViewModel),
+                .inputNumberType(inputNumberTypeSelectionViewModel)
             ]),
+            NumberInputFormSection.form([
+                inputTextFormViewModel
+            ], headerTitle: "Input"),
             NumberInputFormSection.form([
                 decimalTextFormViewModel
             ], headerTitle: "Decimal"),
@@ -67,7 +94,29 @@ final class NumberBaseInteractor {
                 binaryTextFormViewModel
             ], headerTitle: "Binary")
         ]
-
+        inputTextFormViewModel.$text.removeDuplicates().sink { [unowned self] text in
+            guard let value = self.inputNumberTypeSelectionViewModel.selectedItem else {
+                return
+            }
+            var radix: Int {
+                switch value {
+                case .decimal:
+                    return 10
+                case .hexadecimal:
+                    return 16
+                case .octal:
+                    return 8
+                case .binary:
+                    return 2
+                }
+            }
+            self.update(
+                text,
+                radix: radix,
+                format: self.formatEnabledViewModel.isOn,
+                uppercase: uppercaseEnabledViewModel.isOn
+            )
+        }.store(in: &cancellable)
         decimalTextFormViewModel.$text.removeDuplicates().sink { [unowned self] text in
             self.update(
                 text,
@@ -128,6 +177,7 @@ final class NumberBaseInteractor {
             isUpdating = false
             return
         }
+        inputTextFormViewModel.update(text: integer.stringfy(radix: radix, format: format))
         decimalTextFormViewModel.update(text: integer.stringfy(radix: 10, format: format))
         hexTextFormViewModel.update(text: integer.stringfy(radix: 16, format: format))
         octalTextFormViewModel.update(text: integer.stringfy(radix: 8, format: format))

@@ -10,18 +10,26 @@ import Foundation
 class OctalTextFormViewModel: TextFormViewModel {
     var formatText = false
 
-    required init() {
+    static func alloewdString(_ string: String) -> Bool {
+        if string.contains(" ") {
+            return false
+        }
+        if string == "00" {
+            return false
+        }
+        return string.purify(radix: 8)?.toInteger(radix: 8) != nil
+    }
+
+    required init(isEditable: Bool) {
         super.init(
             text: "0",
             textForm: TextForm(
-                placeholder: "Octal"
+                placeholder: "Octal",
+                isEditable: isEditable
             ),
             defaultString: "0",
             allowedStringHandler: { string in
-                if string == "00" {
-                    return false
-                }
-                return string.purify(radix: 8)?.toInteger(radix: 8) != nil
+                return OctalTextFormViewModel.alloewdString(string)
             }
         )
         self.formatHandler = { [unowned self] string in

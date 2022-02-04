@@ -138,6 +138,13 @@ extension TextFormCell: UITextFieldDelegate {
         return false
     }
 
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        guard let viewModel = viewModel as? TextFormViewModel else {
+            return false
+        }
+        return viewModel.textForm.isEditable
+    }
+
     func textFieldDidEndEditing(_ textField: UITextField) {
         shouldSkipFirstValidation = false
         validate()

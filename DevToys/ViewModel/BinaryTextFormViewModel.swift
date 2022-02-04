@@ -10,15 +10,23 @@ import Foundation
 class BinaryTextFormViewModel: TextFormViewModel {
     var formatText = false
 
-    required init() {
+    static func alloewdString(_ string: String) -> Bool {
+        if string.contains(" ") {
+            return false
+        }
+        return string.purify(radix: 2)?.toInteger(radix: 2) != nil
+    }
+
+    required init(isEditable: Bool) {
         super.init(
             text: "0",
             textForm: TextForm(
-                placeholder: "Binary"
+                placeholder: "Binary",
+                isEditable: isEditable
             ),
             defaultString: "0",
             allowedStringHandler: { string in
-                return string.purify(radix: 2)?.toInteger(radix: 2) != nil
+                return BinaryTextFormViewModel.alloewdString(string)
             }
         )
         self.formatHandler = { [unowned self] string in

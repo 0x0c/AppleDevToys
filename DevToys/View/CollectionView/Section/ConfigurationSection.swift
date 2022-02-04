@@ -22,6 +22,7 @@ final class ConfigurationSection: CollectionViewSection, DefaultSupplementalView
 
     func registerCell(collectionView: UICollectionView) {
         collectionView.register(cellType: SwitchCell.self)
+        collectionView.register(cellType: InputNumberTypePulldownMenuCell.self)
     }
 
     func registerSupplementaryView(collectionView: UICollectionView) {
@@ -59,6 +60,10 @@ final class ConfigurationSection: CollectionViewSection, DefaultSupplementalView
         switch item {
         case let .toggle(viewModel):
             let cell = collectionView.dequeueReusableCell(for: indexPath) as SwitchCell
+            cell.viewModel = viewModel
+            return cell
+        case let .inputNumberType(viewModel):
+            let cell = collectionView.dequeueReusableCell(for: indexPath) as InputNumberTypePulldownMenuCell
             cell.viewModel = viewModel
             return cell
         }
