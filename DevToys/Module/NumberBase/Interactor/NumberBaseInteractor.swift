@@ -30,42 +30,7 @@ final class NumberBaseInteractor {
     private var cancellable = Set<AnyCancellable>()
 
     private var inputNumberTypeSelectionViewModel = InputNumberTypeSelectionCellViewModel()
-    private lazy var inputTextFormViewModel = TextFormViewModel(
-        text: "0",
-        textForm: TextForm(
-            placeholder: "Input"
-        ),
-        defaultString: "0",
-        allowedStringHandler: { [unowned self] string in
-            guard let value = self.inputNumberTypeSelectionViewModel.selectedItem else {
-                return false
-            }
-            switch value {
-            case .decimal:
-                return DecimalTextFormViewModel.alloewdString(string)
-            case .hexadecimal:
-                return HexadecimalTextFormViewModel.alloewdString(string)
-            case .octal:
-                return OctalTextFormViewModel.alloewdString(string)
-            case .binary:
-                return BinaryTextFormViewModel.alloewdString(string)
-            }
-        }, formatHandler: { [unowned self] string in
-            guard let value = self.inputNumberTypeSelectionViewModel.selectedItem else {
-                return nil
-            }
-            switch value {
-            case .decimal:
-                return DecimalTextFormViewModel.formatedString(string)
-            case .hexadecimal:
-                return HexadecimalTextFormViewModel.formatedString(string)
-            case .octal:
-                return OctalTextFormViewModel.formatedString(string)
-            case .binary:
-                return BinaryTextFormViewModel.formatedString(string)
-            }
-        }
-    )
+    private var inputTextFormViewModel = InputNumberTextFormViewModel()
     private var decimalTextFormViewModel = DecimalTextFormViewModel(isEditable: false)
     private var hexTextFormViewModel = HexadecimalTextFormViewModel(isEditable: false)
     private var octalTextFormViewModel = OctalTextFormViewModel(isEditable: false)
@@ -108,7 +73,8 @@ final class NumberBaseInteractor {
                 binaryTextFormViewModel
             ], headerTitle: "Binary")
         ]
-        inputNumberTypeSelectionViewModel.$selectedItem.sink { [unowned self] _ in
+        inputNumberTypeSelectionViewModel.$selectedItem.sink { [unowned self] value in
+            self.inputTextFormViewModel.selectedItem = value
             self.inputTextFormViewModel.update(text: "0")
         }.store(in: &cancellable)
         inputTextFormViewModel.$text.removeDuplicates().sink { [unowned self] text in
