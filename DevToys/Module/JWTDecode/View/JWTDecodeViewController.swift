@@ -56,7 +56,7 @@ final class JWTDecodeViewController: UIViewController {
     // MARK: Other private methods
 
     @IBAction private func didPasteButtonPress(_ sender: Any) {
-        if let text = UIPasteboard.general.value(forPasteboardType: "public.text") as? String {
+        if let text = UIPasteboard.general.string {
             jwtTokenTextView.text = text
             decodeToken(jwtTokenTextView.text)
             Drops.hideAll()
@@ -66,7 +66,7 @@ final class JWTDecodeViewController: UIViewController {
 
     @IBAction private func didCopyHeaderButtonPress(_ sender: Any) {
         if let text = headeTextView.text {
-            UIPasteboard.general.setValue(text, forPasteboardType: "public.text")
+            UIPasteboard.general.string = text
             Drops.hideAll()
             Drops.show("Copied!")
         }
