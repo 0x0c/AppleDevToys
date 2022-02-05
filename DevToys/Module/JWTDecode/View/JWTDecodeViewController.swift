@@ -58,6 +58,7 @@ final class JWTDecodeViewController: UIViewController {
     }
 
     // MARK: Other private methods
+
     @IBAction private func didPasteButtonPress(_ sender: Any) {
         if let text = UIPasteboard.general.value(forPasteboardType: "public.text") as? String {
             jwtTokenTextView.text = text

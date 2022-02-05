@@ -24,6 +24,7 @@ final class UUIDViewController: UIViewController {
     private var cancellable = Set<AnyCancellable>()
 
     // MARK: IBOutlets
+
     @IBOutlet private var hyphenateSwitch: UISwitch!
     @IBOutlet private var uppercaseSwitch: UISwitch!
     @IBOutlet private var textView: UITextView!
@@ -51,6 +52,7 @@ final class UUIDViewController: UIViewController {
     }
 
     // MARK: Other private methods
+
     @IBAction private func didPlusButtonPress(_ sender: Any) {
         if let text = numberOfUUIDsTextField.text,
            var number = Int(text) {
@@ -71,7 +73,7 @@ final class UUIDViewController: UIViewController {
         if let text = numberOfUUIDsTextField.text,
            let numberOfUUIDs = Int(text) {
             var uuids = [String]()
-            for _ in 0..<numberOfUUIDs {
+            for _ in 0 ..< numberOfUUIDs {
                 var uuidString = UUID().description
                 if hyphenateSwitch.isOn == false {
                     uuidString = uuidString.replacingOccurrences(of: "-", with: "")
@@ -106,7 +108,7 @@ final class UUIDViewController: UIViewController {
             }
             else {
                 numberOfUUIDsTextField.text =
-                DecimalStringFormatter.purify(text)
+                    DecimalStringFormatter.purify(text)
             }
         }
     }
