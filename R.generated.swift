@@ -488,11 +488,15 @@ struct _R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    struct urlEncodeDecodeViewController: Rswift.StoryboardResourceType, Rswift.Validatable {
+    struct urlEncodeDecodeViewController: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
+      typealias InitialController = URLEncodeDecodeViewController
+
       let bundle = R.hostingBundle
       let name = "URLEncodeDecodeViewController"
 
       static func validate() throws {
+        if #available(iOS 13.0, *) { if UIKit.UIImage(systemName: "arrow.left.arrow.right") == nil { throw Rswift.ValidationError(description: "[R.swift] System image named 'arrow.left.arrow.right' is used in storyboard 'URLEncodeDecodeViewController', but couldn't be loaded.") } }
+        if #available(iOS 13.0, *) { if UIKit.UIImage(systemName: "doc") == nil { throw Rswift.ValidationError(description: "[R.swift] System image named 'doc' is used in storyboard 'URLEncodeDecodeViewController', but couldn't be loaded.") } }
         if #available(iOS 13.0, *) { if UIKit.UIImage(systemName: "doc.on.doc") == nil { throw Rswift.ValidationError(description: "[R.swift] System image named 'doc.on.doc' is used in storyboard 'URLEncodeDecodeViewController', but couldn't be loaded.") } }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
