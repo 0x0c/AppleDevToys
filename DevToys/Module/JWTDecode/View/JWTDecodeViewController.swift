@@ -6,6 +6,7 @@
 //  Copyright © 2022 Akira Matsuda. All rights reserved.
 //
 
+import Drops
 import Highlightr
 import JWTDecode
 import UIKit
@@ -57,14 +58,42 @@ final class JWTDecodeViewController: UIViewController {
     }
 
     // MARK: Other private methods
-}
+    @IBAction private func didPasteButtonPress(_ sender: Any) {
+        if let text = UIPasteboard.general.value(forPasteboardType: "public.text") as? String {
+            jwtTokenTextView.text = text
+            decodeToken(jwtTokenTextView.text)
+            Drops.hideAll()
+            Drops.show("Pasted!")
+        }
+    }
 
-extension JWTDecodeViewController: JWTDecodeViewInput {}
+    @IBAction private func didCopyHeaderButtonPress(_ sender: Any) {
+        if let text = headeTextView.text {
+            UIPasteboard.general.setValue(text, forPasteboardType: "public.text")
+            Drops.hideAll()
+            Drops.show("Copied!")
+        }
+    }
 
-extension JWTDecodeViewController: UITextViewDelegate {
-    func textViewDidChange(_ textView: UITextView) {
+    @IBAction private func didCopyPayloadButtonPress(_ sender: Any) {
+        if let text = payloadTextView.text {
+            UIPasteboard.general.setValue(text, forPasteboardType: "public.text")
+            Drops.hideAll()
+            Drops.show("Copied!")
+        }
+    }
+
+    @IBAction private func didCopySignatureButtonPress(_ sender: Any) {
+        if let text = signatureTextView.text {
+            UIPasteboard.general.setValue(text, forPasteboardType: "public.text")
+            Drops.hideAll()
+            Drops.show("Copied!")
+        }
+    }
+
+    private func decodeToken(_ string: String) {
         do {
-            let jwt = try decode(jwt: textView.text)
+            let jwt = try decode(jwt: string)
             let headerObject = try JSONSerialization.data(
                 withJSONObject: jwt.header,
                 options: [.prettyPrinted, .sortedKeys]
@@ -83,9 +112,17 @@ extension JWTDecodeViewController: UITextViewDelegate {
             signatureTextView.text = jwt.signature
         }
         catch {
-            headeTextView.text = nil
-            payloadTextView.text = nil
-            signatureTextView.text = nil
+            headeTextView.text = "[Decode error]"
+            payloadTextView.text = "[Decode error]"
+            signatureTextView.text = "[Decode error]"
         }
+    }
+}
+
+extension JWTDecodeViewController: JWTDecodeViewInput {}
+
+extension JWTDecodeViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        decodeToken(textView.text)
     }
 }
