@@ -21,8 +21,7 @@ final class Base64ViewController: UIViewController {
 
     // MARK: IBOutlets
 
-    @IBOutlet private var encodedTextBaseView: UIView!
-    @IBOutlet private var decodedTextBaseView: UIView!
+    @IBOutlet private var backgroundViews: [UIView]!
     @IBOutlet private var encodedTextView: UITextView!
     @IBOutlet private var decodedTextView: UITextView!
 
@@ -33,8 +32,9 @@ final class Base64ViewController: UIViewController {
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Base64 Encode / Decode"
-        encodedTextBaseView.layer.cornerRadius = Constant.defaultCornerRadius
-        decodedTextBaseView.layer.cornerRadius = Constant.defaultCornerRadius
+        backgroundViews.forEach {
+            $0.layer.cornerRadius = Constant.defaultCornerRadius
+        }
         encodedTextView.font = .monospacedSystemFont(ofSize: 14, weight: .regular)
         decodedTextView.font = .monospacedSystemFont(ofSize: 14, weight: .regular)
         encodedTextView.delegate = self

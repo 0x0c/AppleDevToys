@@ -98,10 +98,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="decodedTextBaseView" destination="ReA-La-CQR" id="fCc-Jt-pJP"/>
                         <outlet property="decodedTextView" destination="Rg2-cn-Msl" id="rM2-NW-z3Q"/>
-                        <outlet property="encodedTextBaseView" destination="hCY-a4-3cD" id="Y5U-Ey-2WK"/>
                         <outlet property="encodedTextView" destination="74x-Gl-QzJ" id="HIM-ye-sgE"/>
+                        <outletCollection property="backgroundViews" destination="hCY-a4-3cD" collectionClass="NSMutableArray" id="CST-bn-wZN"/>
+                        <outletCollection property="backgroundViews" destination="ReA-La-CQR" collectionClass="NSMutableArray" id="V1i-FN-yIq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

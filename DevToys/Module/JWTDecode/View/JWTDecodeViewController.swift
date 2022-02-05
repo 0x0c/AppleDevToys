@@ -29,10 +29,7 @@ final class JWTDecodeViewController: UIViewController {
     @IBOutlet private var payloadTextView: UITextView!
     @IBOutlet private var signatureTextView: UITextView!
 
-    @IBOutlet private var jwtTokenTextViewBaseView: UIView!
-    @IBOutlet private var headerTextViewBaseView: UIView!
-    @IBOutlet private var payloadTextViewBaseView: UIView!
-    @IBOutlet private var signatureTextViewBaseView: UIView!
+    @IBOutlet private var backgroundViews: [UIView]!
 
     private var highlightr: Highlightr! {
         let highlightr = Highlightr()
@@ -50,10 +47,9 @@ final class JWTDecodeViewController: UIViewController {
         title = "JWT Decode"
         jwtTokenTextView.font = .monospacedSystemFont(ofSize: 14, weight: .regular)
         jwtTokenTextView.delegate = self
-        jwtTokenTextViewBaseView.layer.cornerRadius = Constant.defaultCornerRadius
-        headerTextViewBaseView.layer.cornerRadius = Constant.defaultCornerRadius
-        payloadTextViewBaseView.layer.cornerRadius = Constant.defaultCornerRadius
-        signatureTextViewBaseView.layer.cornerRadius = Constant.defaultCornerRadius
+        backgroundViews.forEach {
+            $0.layer.cornerRadius = Constant.defaultCornerRadius
+        }
         presenter.viewDidLoad()
     }
 

@@ -279,13 +279,13 @@
                     </view>
                     <connections>
                         <outlet property="headeTextView" destination="4gj-Zb-cWR" id="9TA-YF-T5Y"/>
-                        <outlet property="headerTextViewBaseView" destination="MM1-Ce-8ex" id="6So-u8-Oal"/>
                         <outlet property="jwtTokenTextView" destination="KqG-vO-wXM" id="n9a-cJ-Mif"/>
-                        <outlet property="jwtTokenTextViewBaseView" destination="g3K-ZF-J68" id="ufx-Wq-IDt"/>
                         <outlet property="payloadTextView" destination="OrD-Nc-LKM" id="y4h-nv-8SZ"/>
-                        <outlet property="payloadTextViewBaseView" destination="Ar8-4g-M5L" id="C5A-Bl-M4z"/>
                         <outlet property="signatureTextView" destination="daA-ks-MG9" id="XnF-hn-6pd"/>
-                        <outlet property="signatureTextViewBaseView" destination="JxY-fF-Quz" id="u6Q-Fs-KwB"/>
+                        <outletCollection property="backgroundViews" destination="g3K-ZF-J68" collectionClass="NSMutableArray" id="mYi-qX-BCT"/>
+                        <outletCollection property="backgroundViews" destination="MM1-Ce-8ex" collectionClass="NSMutableArray" id="y2K-dz-XcD"/>
+                        <outletCollection property="backgroundViews" destination="Ar8-4g-M5L" collectionClass="NSMutableArray" id="DNS-8M-dqJ"/>
+                        <outletCollection property="backgroundViews" destination="JxY-fF-Quz" collectionClass="NSMutableArray" id="Cw5-KU-fWk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
