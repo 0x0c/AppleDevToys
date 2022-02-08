@@ -1,5 +1,5 @@
 //
-//  InputNumberTypePulldownMenuCell.swift
+//  PulldownMenuCell.swift
 //  DevToys
 //
 //  Created by Akira Matsuda on 2022/02/04.
@@ -9,14 +9,14 @@ import Combine
 import Reusable
 import UIKit
 
-class InputNumberTypePulldownMenuCell: UICollectionViewCell, NibReusable {
+class PulldownMenuCell: UICollectionViewCell, NibReusable {
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var detailLabel: UILabel!
     @IBOutlet private var iconImageView: UIImageView!
     @IBOutlet private var pulldownButton: UIButton!
     private var cancellable = Set<AnyCancellable>()
 
-    var viewModel: InputNumberTypeSelectionCellViewModel? {
+    var viewModel: PulldownMenuViewModel? {
         didSet {
             guard let viewModel = viewModel else {
                 return
@@ -26,20 +26,14 @@ class InputNumberTypePulldownMenuCell: UICollectionViewCell, NibReusable {
             iconImageView.image = viewModel.iconImage
             pulldownButton.menu = UIMenu(
                 title: "Input type",
-                children: viewModel.selectableItems.map { item in
-                    UIAction(title: item.title()) { [unowned self] _ in
-                        self.valueChanged(item)
+                children: viewModel.menuTitles().map { title in
+                    UIAction(title: title) { [unowned self] action in
+                        self.didButtonPress(action.title)
                     }
                 }
             )
             pulldownButton.showsMenuAsPrimaryAction = true
-            viewModel.$selectedItem.sink { [weak self] value in
-                guard let weakSelf = self else {
-                    return
-                }
-                weakSelf.updateMenu(for: value)
-            }.store(in: &cancellable)
-            updateMenu(for: viewModel.selectedItem)
+            pulldownButton.setTitle(viewModel.selectedItemTitle(), for: .normal)
         }
     }
 
@@ -49,25 +43,19 @@ class InputNumberTypePulldownMenuCell: UICollectionViewCell, NibReusable {
         layer.cornerRadius = Constant.defaultCornerRadius
     }
 
-    private func valueChanged(_ value: InputNumberType) {
+    private func didButtonPress(_ title: String?) {
         guard let viewModel = viewModel else {
             return
         }
-        viewModel.selectedItem = value
-    }
-
-    private func updateMenu(for value: InputNumberType?) {
-        guard let viewModel = viewModel, let value = value else {
-            return
-        }
-        pulldownButton.setTitle(value.title(), for: .normal)
+        pulldownButton.setTitle(title, for: .normal)
         pulldownButton.menu = UIMenu(
             title: "Input type",
-            children: viewModel.selectableItems.map { item in
-                UIAction(title: item.title()) { [unowned self] _ in
-                    self.valueChanged(item)
+            children: viewModel.menuTitles().map { title in
+                UIAction(title: title) { [unowned self] action in
+                    self.didButtonPress(action.title)
                 }
             }
         )
+        viewModel.updateMenu(for: title)
     }
 }

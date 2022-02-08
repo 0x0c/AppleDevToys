@@ -56,7 +56,7 @@ final class NumberBaseInteractor {
             ConfigurationSection(items: [
                 .toggle(formatEnabled),
                 .toggle(uppercaseEnabled),
-                .inputNumberType(inputNumberTypeSelection)
+                .pulldownMenu(inputNumberTypeSelection)
             ]),
             NumberInputFormSection.form([
                 inputTextForm

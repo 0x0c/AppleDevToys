@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gTV-IL-0wX" customClass="InputNumberTypePulldownMenuCell" customModule="DevToys" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gTV-IL-0wX" customClass="PulldownMenuCell" customModule="DevToys" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="345" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -64,10 +64,10 @@
             </constraints>
             <size key="customSize" width="345" height="44"/>
             <connections>
-                <outlet property="detailLabel" destination="uCp-9I-nvR" id="UaJ-Y3-bfr"/>
-                <outlet property="iconImageView" destination="5D7-Ce-d4f" id="njX-N1-U15"/>
-                <outlet property="pulldownButton" destination="YUa-VW-6J1" id="Y7r-lI-Vja"/>
-                <outlet property="titleLabel" destination="cqL-yQ-15E" id="r0r-Lv-6In"/>
+                <outlet property="detailLabel" destination="uCp-9I-nvR" id="U8A-dF-73R"/>
+                <outlet property="iconImageView" destination="5D7-Ce-d4f" id="6UJ-BG-VSo"/>
+                <outlet property="pulldownButton" destination="YUa-VW-6J1" id="wgm-Yq-3qj"/>
+                <outlet property="titleLabel" destination="cqL-yQ-15E" id="h24-2L-PuK"/>
             </connections>
             <point key="canvasLocation" x="150" y="130.58035714285714"/>
         </collectionViewCell>

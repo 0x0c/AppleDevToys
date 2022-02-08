@@ -14,7 +14,7 @@ extension InputNumberType: PulldownableItem {
     }
 }
 
-class InputNumberTypeSelectionCellViewModel: PulldownSelectableItemViewModel<InputNumberType>, Hashable {
+class InputNumberTypeSelectionCellViewModel: PulldownMenuCellViewModel<InputNumberType>, Hashable {
     static func == (lhs: InputNumberTypeSelectionCellViewModel, rhs: InputNumberTypeSelectionCellViewModel) -> Bool {
         return lhs.hashValue == rhs.hashValue
     }
@@ -24,12 +24,10 @@ class InputNumberTypeSelectionCellViewModel: PulldownSelectableItemViewModel<Inp
         hasher.combine(detail)
     }
 
-    let detail: String
-
     init() {
-        detail = "Select which type you want to use"
         super.init(
             title: "Input type",
+            detail: "Select which type you want to use",
             iconImage: UIImage(systemSymbol: .arrowLeftArrowRight),
             selectableItems: InputNumberType.allCases,
             initialSelection: .decimal
